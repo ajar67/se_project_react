@@ -1,0 +1,47 @@
+.weather {
+  position: relative;
+}
+
+.weather__info {
+  position: absolute;
+  left: 16px;
+  top: 20px;
+  color: white;
+  font-size: 36px;
+}
+
+.weather__image {
+  width: 100%;
+}
+
+.main {
+  padding: 0px 20px;
+}
+
+.card__section {
+  margin-top: 34px;
+}
+
+.card__name {
+  text-align: center;
+}
+
+.card__image {
+  width: 328px;
+  height: 328px;
+  border-radius: 10px;
+}
+
+.card__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 17px;
+  justify-content: center;
+  margin-top: 34px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 85px 24px 24px 40px;
+}
