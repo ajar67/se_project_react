@@ -1,0 +1,50 @@
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal__content {
+  position: relative;
+  background-color: white;
+  width: 496px;
+  height: 436px;
+  border-radius: 20px;
+  padding: 34px 36px;
+  margin-left: 28px;
+}
+
+.modal__button-reset {
+  position: absolute;
+  right: 50px;
+  top: 50px;
+  border: none;
+  background: none;
+  height: 14px;
+  width: 14px;
+  color: black;
+}
+
+.modal__title {
+  margin: 28px auto 24px 0;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__button-submit {
+  margin: 34px 0 36px 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  border-style: none;
+  height: 36px;
+  width: 124px;
+}

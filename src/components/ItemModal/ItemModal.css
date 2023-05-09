@@ -1,0 +1,43 @@
+.modal {
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal__content {
+  position: relative;
+  background-color: white;
+  height: 610px;
+  width: 498px;
+  border-radius: 10px;
+  padding: 34px 36px;
+}
+
+.modal__image {
+  border-radius: 10px;
+}
+
+.modal__button-reset {
+  position: absolute;
+  right: 50px;
+  top: 50px;
+  border: none;
+  background: none;
+  width: 14px;
+  height: 14px;
+}
+
+.modal__text {
+  font-family: "Cabinet Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  margin-left: 32px;
+  margin-top: 20px;
+}

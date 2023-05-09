@@ -1,4 +1,4 @@
-import Main from "../Main/Main";
+//import Main from "../components/Main/Main";
 
 const latitude = 44.34;
 const longitude = 10.99;

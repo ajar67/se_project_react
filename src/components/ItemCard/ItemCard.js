@@ -1,4 +1,5 @@
-const ItemCard = ({ item, onSelectCard }) => {
+import "./ItemCard.css";
+const ItemCard = ({ item, onSelectCard }) => (
   <div>
     <div>
       <img
@@ -8,7 +9,7 @@ const ItemCard = ({ item, onSelectCard }) => {
       />
     </div>
     <div className="card__name">{item.name}</div>
-  </div>;
-};
+  </div>
+);
 
 export default ItemCard;
