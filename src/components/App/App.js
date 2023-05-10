@@ -26,10 +26,12 @@ function App() {
   };
 
   useEffect(() => {
-    getForecastWeather().then((data) => {
-      const temperature = parseWeatherData(data);
-      setTemp(temperature);
-    });
+    getForecastWeather()
+      .then((data) => {
+        const temperature = parseWeatherData(data);
+        setTemp(temperature);
+      })
+      .catch(console.log("Error!"));
   }, []);
 
   return (
@@ -38,7 +40,11 @@ function App() {
       <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
       <Footer />
       {activeModal === "create" && (
-        <ModalWithForm title="New Garment" onClose={handleCloseModal}>
+        <ModalWithForm
+          title="New Garment"
+          buttonText="Add garment"
+          onClose={handleCloseModal}
+        >
           <label className="modal__info">
             Name
             <input
@@ -64,15 +70,15 @@ function App() {
           <p className="modal__info">Select the weather type:</p>
           <div>
             <div>
-              <input type="radio" id="hot" value="hot" />
+              <input type="radio" id="hot" value="hot" name="radio" />
               <label>Hot</label>
             </div>
             <div>
-              <input type="radio" id="warm" value="warm" />
+              <input type="radio" id="warm" value="warm" name="radio" />
               <label>Warm</label>
             </div>
             <div>
-              <input type="radio" id="cold" value="cold" />
+              <input type="radio" id="cold" value="cold" name="radio" />
               <label>Cold</label>
             </div>
           </div>

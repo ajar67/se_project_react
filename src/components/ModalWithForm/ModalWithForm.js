@@ -1,20 +1,12 @@
 import "./ModalWithForm.css";
+import closeImage from "../../images/closeGrey.svg";
 
-const ModalWithForm = ({
-  title,
-  children,
-  buttonText = "Add garment",
-  onClose,
-  name,
-}) => {
+const ModalWithForm = ({ title, children, buttonText, onClose, name }) => {
   return (
     <div className={`modal modal__type_${name}`}>
       <div className="modal__content">
         <button className="modal__button-reset" type="button" onClick={onClose}>
-          <img
-            src={require("../../images/close.svg").default}
-            alt="close button"
-          />
+          <img src={closeImage} alt="close button" />
         </button>
         <h3 className="modal__title">{title}</h3>
         <form className="modal__form">{children}</form>

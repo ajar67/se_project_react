@@ -22,12 +22,12 @@
 
 .modal__button-reset {
   position: absolute;
-  right: 50px;
-  top: 50px;
+  right: 28px;
+  top: 20px;
   border: none;
   background: none;
-  height: 14px;
-  width: 14px;
+  height: 20px;
+  width: 20px;
   color: black;
 }
 
