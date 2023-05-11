@@ -14,13 +14,13 @@ const Header = ({ onCreateModal }) => {
         <div>
           <img src={logoImage} alt="logo" />
         </div>
-        <div>{currentDate}</div>
+        <div className='header__date'>{currentDate}</div>
       </div>
       <div className="header__avatar-logo">
-        <button type="text" onClick={onCreateModal}>
-          Add New Clothes
+        <button type="text" className="header__button" onClick={onCreateModal}>
+          + Add clothes
         </button>
-        <div>Anthony Ranieri</div>
+        <div className='header__name'>Anthony Ranieri</div>
         <div>
           <img src={avatarImage} alt="avatar" />
         </div>

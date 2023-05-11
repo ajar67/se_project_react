@@ -30,6 +30,11 @@
   background: none;
   width: 14px;
   height: 14px;
+  cursor: pointer;
+}
+
+.modal__button-reset:hover {
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .modal__text {

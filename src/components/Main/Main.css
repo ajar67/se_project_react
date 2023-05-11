@@ -4,6 +4,11 @@
 
 .card__section {
   margin-top: 34px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
 }
 
 .card__items {
