@@ -34,11 +34,11 @@
 }
 
 .modal__button-reset:hover {
-  background: rgba(0, 0, 0, 0.6);
+  opacity: 0.6;
 }
 
 .modal__text {
-  font-family: "Cabinet Grotesk";
+  font-family: "Cabinet Grotesk", sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
