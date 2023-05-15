@@ -26,9 +26,11 @@
   top: 20px;
   border: none;
   background: none;
-  height: 20px;
-  width: 20px;
   color: black;
+}
+
+.modal__close {
+  height: 20px;
 }
 
 .modal__title {

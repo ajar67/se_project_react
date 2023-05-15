@@ -31,7 +31,7 @@ function App() {
         const temperature = parseWeatherData(data);
         setTemp(temperature);
       })
-      .catch(console.log("Error!"));
+      .catch(() => console.log("Error!"));
   }, []);
 
   return (
@@ -70,16 +70,34 @@ function App() {
           <p className="modal__info">Select the weather type:</p>
           <div>
             <div>
-              <input type="radio" id="hot" value="hot" name="radio" />
-              <label>Hot</label>
+              <input
+                className="modal__radio"
+                type="radio"
+                id="hot"
+                value="hot"
+                name="radio"
+              />
+              <label className="modal__label">Hot</label>
             </div>
             <div>
-              <input type="radio" id="warm" value="warm" name="radio" />
-              <label>Warm</label>
+              <input
+                className="modal__radio"
+                type="radio"
+                id="warm"
+                value="warm"
+                name="radio"
+              />
+              <label className="modal__label">Warm</label>
             </div>
             <div>
-              <input type="radio" id="cold" value="cold" name="radio" />
-              <label>Cold</label>
+              <input
+                className="modal__radio"
+                type="radio"
+                id="cold"
+                value="cold"
+                name="radio"
+              />
+              <label className="modal__label">Cold</label>
             </div>
           </div>
         </ModalWithForm>
