@@ -2,7 +2,9 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import { defaultClothingItems } from "../../utils/constants";
 import "./Main.css";
+import { CurrentTemperatureUnitContext } from "../../Contexts/CurrentTemperatureUnitContext";
 
+//////////////////////////////////////////////////////////////////////////////
 function Main({ weatherTemp, onSelectCard }) {
   const getWeatherType = () => {
     if (weatherTemp >= 86) {
@@ -21,15 +23,21 @@ function Main({ weatherTemp, onSelectCard }) {
 
   return (
     <main className="main">
-      <WeatherCard day={false} type="Cloudy" weatherTemp={weatherTemp} />
-      <section className="card__section">
-        Today is {weatherTemp}°F/ you may want to wear:
-        <div className="card__items">
-          {filteredCards.map((item) => (
-            <ItemCard item={item} key={item._id} onSelectCard={onSelectCard} />
-          ))}
-        </div>
-      </section>
+      <CurrentTemperatureUnitContext.Provider>
+        <WeatherCard day={false} type="Cloudy" weatherTemp={weatherTemp} />
+        <section className="card__section">
+          Today is {weatherTemp}°F/ you may want to wear:
+          <div className="card__items">
+            {filteredCards.map((item) => (
+              <ItemCard
+                item={item}
+                key={item._id}
+                onSelectCard={onSelectCard}
+              />
+            ))}
+          </div>
+        </section>
+      </CurrentTemperatureUnitContext.Provider>
     </main>
   );
 }
