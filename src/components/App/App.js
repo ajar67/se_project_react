@@ -16,7 +16,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleToggleSwitchChange = () => {
-    currentTemperatureUnit === 'F' ? setCurrentTemperatureUnit('C') : setCurrentTemperatureUnit('F');
+    currentTemperatureUnit === '°F' ? setCurrentTemperatureUnit('°C') : setCurrentTemperatureUnit('°F');
   };
 
   const handleChangedCheck = () => {

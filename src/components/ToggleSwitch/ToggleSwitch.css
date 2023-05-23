@@ -1,7 +1,12 @@
 .header__input {
-  height: 0;
-  width: 0;
-  visibility: hidden;
+  display: flex;
+  border-radius: 20px;
+  appearance: none;
+  cursor: pointer;
+  border: 2px solid #7e7e7e;
+  width: 56px;
+  height: 28px;
+  outline: none;
 }
 
 .header__label {
@@ -26,7 +31,7 @@
   height: 28px;
   border-radius: 45px;
   transition: 0.2s;
-  background: #fff;
+  background: black;
   box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
 }
 
