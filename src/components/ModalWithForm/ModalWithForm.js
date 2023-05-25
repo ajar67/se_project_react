@@ -1,5 +1,6 @@
 import "./ModalWithForm.css";
 import closeImage from "../../images/closeGrey.svg";
+import React from "react";
 
 const ModalWithForm = ({ title, children, buttonText, onClose, name }) => {
   return (

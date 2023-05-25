@@ -1,5 +1,6 @@
 import "./ItemModal.css";
 import closeImage from "../../images/close.svg";
+import React from "react";
 
 const ItemModal = ({ selectedCard, onClose }) => {
   return (

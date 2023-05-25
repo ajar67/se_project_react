@@ -1,4 +1,5 @@
 import avatarImage from "../../images/avatar.svg";
+import React from 'react';
 
 const SideBar = () => {
   return (

@@ -1,5 +1,6 @@
 import { latitude, longitude, APIkey } from "./constants";
 
+
 export const processServerResponse = (res) => {
   if (res.ok) {
     return res.json();

@@ -1,5 +1,6 @@
 import { defaultClothingItems } from "../../utils/constants";
 import ItemCard from "../ItemCard/ItemCard";
+import React from "react";
 
 const ClothesSection = () => {
   return (
@@ -11,9 +12,9 @@ const ClothesSection = () => {
         </button>
       </div>
       <section className="clothes__section">
-      {defaultClothingItems.map((item) => (
-            <ItemCard item={item} key={item._id} onSelectCard={onSelectCard} />
-          ))}
+        {defaultClothingItems.map((item) => (
+          <ItemCard item={item} key={item._id} onSelectCard={onSelectCard} />
+        ))}
       </section>
     </div>
   );
