@@ -9,14 +9,15 @@ import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../Contexts/CurrentTemperatureUnitContext";
 import Profile from "../profile/profile";
 import { Route, Switch } from "react-router-dom";
-import AddItemModal from "../AddItemModal/AddItemModal";
+//import AddItemModal from "../AddItemModal/AddItemModal";
+import { Get, Delete } from "../../utils/api";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [checked, setChecked] = useState(false);
-  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("°F");
 
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "°F"
@@ -41,12 +42,25 @@ function App() {
     setSelectedCard(card);
   };
 
+  //const handleDeleteCard = (card) => {
+     //Delete(card.id).then(() => {
+            //handleCloseModal;
+            //card.remove();
+     //}).catch((err) => console.log(err));
+  //};
+
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
         const temperature = parseWeatherData(data);
         setTemp(temperature);
       })
+      .catch(() => console.log("Error!"));
+  }, []);
+
+  useEffect(() => {
+    Get()
+      .then((cards) => {})
       .catch(() => console.log("Error!"));
   }, []);
 
