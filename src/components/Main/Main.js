@@ -7,7 +7,7 @@ import React from 'react';
 
 //////////////////////////////////////////////////////////////////////////////
 function Main({ weatherTemp, onSelectCard }) {
-  const currentTemperatureUnit = React.useContext(CurrentTemperatureUnitContext);
+  const {currentTemperatureUnit} = React.useContext(CurrentTemperatureUnitContext);
   const getWeatherType = () => {
     if (weatherTemp >= 86) {
       return "hot";
