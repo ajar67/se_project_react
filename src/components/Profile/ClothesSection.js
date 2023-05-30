@@ -13,7 +13,7 @@ const ClothesSection = () => {
       </div>
       <section className="clothes__section">
         {defaultClothingItems.map((item) => (
-          <ItemCard item={item} key={item._id} onSelectCard={onSelectCard} />
+          <ItemCard item={item} key={item._id} onSelectCard="{onSelectCard}" />
         ))}
       </section>
     </div>

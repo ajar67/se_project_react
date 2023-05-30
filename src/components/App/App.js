@@ -7,10 +7,10 @@ import { useEffect, useState, React } from "react";
 import ItemModal from "../ItemModal/ItemModal";
 import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../Contexts/CurrentTemperatureUnitContext";
-import Profile from "../profile/profile";
+import Profile from "../Profile/Profile";
 import { Route, Switch } from "react-router-dom";
 //import AddItemModal from "../AddItemModal/AddItemModal";
-import { Get, Delete } from "../../utils/api";
+import { Get, Delete, Post } from "../../utils/api";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -49,6 +49,10 @@ function App() {
      //}).catch((err) => console.log(err));
   //};
 
+  const handleAddItemSubmit = () => {
+    Post.then(() => {});
+  }
+
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
@@ -63,8 +67,9 @@ function App() {
       .then((cards) => {})
       .catch(() => console.log("Error!"));
   }, []);
+  //////////////////////////////////
 
-  return (
+  return(
     <div>
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}

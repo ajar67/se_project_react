@@ -1,10 +1,10 @@
 import { baseURL, processResponseServer } from "./constants";
 
-export default function Get() {
+function Get() {
   return fetch(`${baseURL}/items`).then(processResponseServer);
 }
 
-export default function Post(name, imageUrl, weather) {
+function Post(name, imageUrl, weather) {
   return fetch(`${baseURL}/items`, {
     method: "POST",
     body: JSON.stringify({
@@ -15,8 +15,10 @@ export default function Post(name, imageUrl, weather) {
   }).then(processResponseServer);
 }
 
-export default function Delete(id) {
+function Delete(id) {
   return fetch(`${baseURL}/items/:${id}`, {
     method: "DELETE",
   }).then(processResponseServer);
 }
+
+export {Get, Post, Delete};
