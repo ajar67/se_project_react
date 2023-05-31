@@ -3,11 +3,13 @@ import ItemCard from "../ItemCard/ItemCard";
 import { defaultClothingItems } from "../../utils/constants";
 import "./Main.css";
 import { CurrentTemperatureUnitContext } from "../../Contexts/CurrentTemperatureUnitContext";
-import React from 'react';
+import React from "react";
 
 //////////////////////////////////////////////////////////////////////////////
 function Main({ weatherTemp, onSelectCard }) {
-  const {currentTemperatureUnit} = React.useContext(CurrentTemperatureUnitContext);
+  const { currentTemperatureUnit } = React.useContext(
+    CurrentTemperatureUnitContext
+  );
   const getWeatherType = () => {
     if (weatherTemp >= 86) {
       return "hot";
@@ -23,11 +25,15 @@ function Main({ weatherTemp, onSelectCard }) {
     return item.weather.toLowerCase() === weatherType;
   });
 
+  console.log(filteredCards);
+
+  const todayTemp = weatherTemp && weatherTemp[currentTemperatureUnit] || "";
+
   return (
     <main className="main">
       <WeatherCard day={false} type="Cloudy" weatherTemp={weatherTemp} />
       <section className="card__section">
-        Today is {weatherTemp[currentTemperatureUnit]}/ you may want to wear:
+        Today is {todayTemp}/ you may want to wear:
         <div className="card__items">
           {filteredCards.map((item) => (
             <ItemCard item={item} key={item._id} onSelectCard={onSelectCard} />

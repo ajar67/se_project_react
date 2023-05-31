@@ -7,6 +7,14 @@ const AddItemModal = ({isOpen, onAddItem, onCloseModal}) => {
         
     }
 
+    return(
+        <>
+        <ModalWithForm>
+            
+        </ModalWithForm>
+        </>
+    )
+
 };
 
 export default AddItemModal;

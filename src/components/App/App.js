@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useEffect, useState, React } from "react";
+import React, { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
 import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../Contexts/CurrentTemperatureUnitContext";
@@ -43,15 +43,15 @@ function App() {
   };
 
   //const handleDeleteCard = (card) => {
-     //Delete(card.id).then(() => {
-            //handleCloseModal;
-            //card.remove();
-     //}).catch((err) => console.log(err));
+  //Delete(card.id).then(() => {
+  //handleCloseModal;
+  //card.remove();
+  //}).catch((err) => console.log(err));
   //};
 
-  const handleAddItemSubmit = () => {
-    Post.then(() => {});
-  }
+  // const handleAddItemSubmit = () => {
+  //   Post.then(() => {});
+  // };
 
   useEffect(() => {
     getForecastWeather()
@@ -62,14 +62,14 @@ function App() {
       .catch(() => console.log("Error!"));
   }, []);
 
-  useEffect(() => {
-    Get()
-      .then((cards) => {})
-      .catch(() => console.log("Error!"));
-  }, []);
+  // useEffect(() => {
+  //   Get()
+  //     .then((cards) => {})
+  //     .catch(() => console.log("Error!"));
+  // }, []);
   //////////////////////////////////
 
-  return(
+  return (
     <div>
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -79,11 +79,12 @@ function App() {
           onChange={handleChangedCheck}
           value={checked}
         />
+        <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
         <Switch>
-          <Route exact path="/">
+          <Route path="/main">
             <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
           </Route>
-          <Route path="/Profile">
+          <Route path="/profile">
             <Profile />
           </Route>
         </Switch>
@@ -153,7 +154,7 @@ function App() {
         )}
         {activeModal === "preview" && (
           <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
-        )}
+        )} 
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );
