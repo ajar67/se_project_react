@@ -1,3 +1,5 @@
+
+import cloudyImage from  "../images/night/Cloudy.svg" ;
 export const defaultClothingItems = [
   {
     _id: 0,
@@ -43,9 +45,11 @@ export const defaultClothingItems = [
   },
 ];
 
+
+
 export const weatherOptions = [
-  {
-    url: require("../images/day/Sunny.svg").default,
+  { 
+    url: cloudyImage,
     day: true,
     type: "Sunny",
   },
@@ -76,7 +80,7 @@ export const weatherOptions = [
     type: "Sunny",
   },
   {
-    url: require("../images/night/Cloudy.svg").default,
+    url: cloudyImage,
     day: false,
     type: "Cloudy",
   },

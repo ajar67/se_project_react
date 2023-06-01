@@ -1,4 +1,4 @@
-import WeatherCard from "../WeatherCard/WeatherCard";
+import WeatherCard from '../WeatherCard/WeatherCard';
 import ItemCard from "../ItemCard/ItemCard";
 import { defaultClothingItems } from "../../utils/constants";
 import "./Main.css";
@@ -11,11 +11,13 @@ function Main({ weatherTemp, onSelectCard }) {
     CurrentTemperatureUnitContext
   );
   const getWeatherType = () => {
-    if (weatherTemp >= 86) {
+    const temp = weatherTemp && weatherTemp[currentTemperatureUnit];
+    console.log(temp);
+    if (temp >= 86) {
       return "hot";
-    } else if (weatherTemp >= 66 && weatherTemp <= 85) {
+    } else if (temp >= 66 && temp <= 85) {
       return "warm";
-    } else if (weatherTemp <= 65) {
+    } else if (temp <= 65) {
       return "cold";
     }
   };
@@ -25,9 +27,7 @@ function Main({ weatherTemp, onSelectCard }) {
     return item.weather.toLowerCase() === weatherType;
   });
 
-  console.log(filteredCards);
-
-  const todayTemp = weatherTemp && weatherTemp[currentTemperatureUnit] || "";
+  const todayTemp = (weatherTemp && weatherTemp[currentTemperatureUnit]) || "";
 
   return (
     <main className="main">
@@ -45,4 +45,3 @@ function Main({ weatherTemp, onSelectCard }) {
 }
 
 export default Main;
-//////

@@ -6,16 +6,23 @@
   padding: 0px 20px;
 }
 
-.header__logo {
+.header__section-one {
   display: flex;
   align-items: center;
   gap: 24px;
+  flex-direction: row;
 }
 
-.header__avatar-logo {
+.header__logo {
+  width: 89px;
+  height: 40px;
+}
+
+.header__section-two {
   display: flex;
   align-items: center;
   gap: 15px;
+  flex-direction: row;
 }
 
 .header__button {
@@ -47,4 +54,17 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
+}
+
+.header__profile {
+  display: flex;
+  flex-direction: row;
+  margin-left: 20px;
+  align-items: center;
+}
+
+.header__avatar-logo {
+  margin-left: 12px;
+  width: 40px;
+  height: 40px;
 }

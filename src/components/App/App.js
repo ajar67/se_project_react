@@ -17,12 +17,12 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [checked, setChecked] = useState(false);
-  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("°F");
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleToggleSwitchChange = () => {
-    currentTemperatureUnit === "°F"
-      ? setCurrentTemperatureUnit("°C")
-      : setCurrentTemperatureUnit("°F");
+    currentTemperatureUnit === "F"
+      ? setCurrentTemperatureUnit("C")
+      : setCurrentTemperatureUnit("F");
   };
 
   const handleChangedCheck = () => {
@@ -79,9 +79,8 @@ function App() {
           onChange={handleChangedCheck}
           value={checked}
         />
-        <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
         <Switch>
-          <Route path="/main">
+          <Route path="/">
             <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
           </Route>
           <Route path="/profile">
@@ -154,7 +153,7 @@ function App() {
         )}
         {activeModal === "preview" && (
           <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
-        )} 
+        )}
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );

@@ -1,20 +1,89 @@
-import {React, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const AddItemModal = ({isOpen, onAddItem, onCloseModal}) => {
-    function handleSubmit(evt) {
-        evt.preventDefault();
-        
-    }
+const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
+  const [name, setName] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [weather, setWeather] = useState("");
 
-    return(
-        <>
-        <ModalWithForm>
-            
-        </ModalWithForm>
-        </>
-    )
+  function handleSubmit(evt) {
+    evt.preventDefault();
+  }
 
+  useEffect(() => {
+    setName("");
+    setImageUrl("");
+    setWeather("");
+  })
+
+  return (
+    <>
+      <ModalWithForm title="New Garment" buttonText="Add garment" onClose={onCloseModal}>
+        <label className="modal__info">
+          Name
+          <input
+            value={name}
+            className="modal__input"
+            type="text"
+            name="name"
+            minLength="1"
+            maxLength="30"
+            placeholder="Name"
+            onChange={(evt) => setName(evt.target.value)}
+          />
+        </label>
+        <label className="modal__info">
+          Image
+          <input
+            value={imageUrl}
+            className="modal__input"
+            type="url"
+            name="link"
+            minLength="1"
+            maxLength="30"
+            placeholder="ImageURL"
+            onChange={(evt) => setImageUrl(evt.target.value)}
+          />
+        </label>
+        <p className="modal__info">Select the weather type:</p>
+        <div>
+          <div>
+            <input
+              className="modal__radio"
+              type="radio"
+              id="hot"
+              value="hot"
+              name="radio"
+              onChange={(evt) => setWeather(evt.target.value)}
+            />
+            <label className="modal__label">Hot</label>
+          </div>
+          <div>
+            <input
+              className="modal__radio"
+              type="radio"
+              id="warm"
+              value="warm"
+              name="radio"
+              onChange={(evt) => setWeather(evt.target.value)}
+            />
+            <label className="modal__label">Warm</label>
+          </div>
+          <div>
+            <input
+              className="modal__radio"
+              type="radio"
+              id="cold"
+              value="cold"
+              name="radio"
+              onChange={(evt) => setWeather(evt.target.value)}
+            />
+            <label className="modal__label">Cold</label>
+          </div>
+        </div>
+      </ModalWithForm>
+    </>
+  );
 };
 
 export default AddItemModal;

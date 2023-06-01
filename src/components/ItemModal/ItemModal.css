@@ -42,6 +42,29 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
+}
+
+.modal__information {
+  display: flex;
+  justify-content: space-between;
   margin-left: 32px;
+  margin-right: 32px;
   margin-top: 12px;
+}
+
+.modal__description {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal__button-delete {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #ff4d00;
+  border: none;
+  background: none;
 }

@@ -2,7 +2,7 @@ import "./ItemModal.css";
 import closeImage from "../../images/close.svg";
 import React from "react";
 
-const ItemModal = ({ selectedCard, onClose }) => {
+const ItemModal = ({ selectedCard, onClose, onDelete }) => {
   return (
     <div className="modal">
       <div className="modal__pic">
@@ -14,9 +14,20 @@ const ItemModal = ({ selectedCard, onClose }) => {
           className="modal__image"
           alt="close button"
         />
-        <div>
-          <div className="modal__text">{selectedCard.name}</div>
-          <div className="modal__text">Weather: {selectedCard.weather}</div>
+        <div className="modal__information">
+          <div className="modal__description">
+            <div className="modal__text">{selectedCard.name}</div>
+            <div className="modal__text">Weather: {selectedCard.weather}</div>
+          </div>
+          <div className="modal__button">
+            <button
+              type="button"
+              className="modal__button-delete"
+              onClick={onDelete}
+            >
+              Delete item
+            </button>
+          </div>
         </div>
       </div>
     </div>
