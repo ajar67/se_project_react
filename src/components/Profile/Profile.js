@@ -1,13 +1,13 @@
-import SideBar from "./SideBar";
-import ClothesSection from "./ClothesSection";
-import React from 'react';
-//import 'Profile.css';     have to create profile.css    has sidebar.js ad clothessection.js as well
+import "./Profile.css";
+import SideBar from "./SideBar/SideBar";
+import ClothesSection from "./ClothesSection/ClothesSection";
+import React from "react";
 
-const Profile = () => {
+const Profile = ({onCreateModal}) => {
   return (
     <div className="profile">
       <SideBar />
-      <ClothesSection />
+      <ClothesSection onCreateModal={onCreateModal}/>
     </div>
   );
 };

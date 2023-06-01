@@ -5,7 +5,7 @@ import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 import React from "react";
 
-const Header = ({ onCreateModal, value, onChange, label }) => {
+const Header = ({ onCreateModal, value, onChange }) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",

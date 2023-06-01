@@ -21,4 +21,4 @@ function Delete(id) {
   }).then(processResponseServer);
 }
 
-export {Get, Post, Delete};
+export { Get, Post, Delete };

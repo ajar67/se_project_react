@@ -80,11 +80,11 @@ function App() {
           value={checked}
         />
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
           </Route>
           <Route path="/profile">
-            <Profile />
+            <Profile onCreateModal={handleCreateModal} />
           </Route>
         </Switch>
         <Footer />
