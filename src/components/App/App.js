@@ -52,24 +52,33 @@ function App() {
       .catch(() => console.log("Error!"));
   });
 
-
   const handleDeleteCard = (card) => {
     Delete(card.id)
       .then(() => {
-        card.remove();
-        card.null();
+        setCards((card) => {
+          card.filter((cards) => {
+            return !(cards.id === card.id);
+          });
+        });
       })
       .catch((err) => console.log(err))
-      .finally(() => handleCloseModal);
+      .finally(handleCloseModal);
   };
 
   /////////////////////////////////////////
   const [cards, setCards] = useState(initialCards);
 
   const handleAddItemSubmit = (inputValue) => {
-     Post({name: inputValue.name, imageUrl: inputValue.imageUrl, weather: inputValue.weather}).then((item) => {
-         setCards([item, ...cards])
-     });
+    Post({
+      name: inputValue.name,
+      imageUrl: inputValue.imageUrl,
+      weather: inputValue.weather,
+    })
+      .then((item) => {
+        setCards([item, ...cards]);
+      })
+      .catch((err) => console.log(err))
+      .finally(handleCloseModal);
   };
   ////////////////////////////////////////////////////
 
