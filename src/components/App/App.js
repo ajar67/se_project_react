@@ -42,16 +42,18 @@ function App() {
     setSelectedCard(card);
   };
 
-  //const handleDeleteCard = (card) => {
-  //Delete(card.id).then(() => {
-  //handleCloseModal;
-  //card.remove();
-  //}).catch((err) => console.log(err));
-  //};
+  const handleDeleteCard = (card) => {
+    Delete(card.id)
+      .then(() => {
+        card.remove();
+      })
+      .catch((err) => console.log(err))
+      .finally(() => handleCloseModal);
+  };
 
-  // const handleAddItemSubmit = () => {
-  //   Post.then(() => {});
-  // };
+   const handleAddItemSubmit = () => {
+     Post.then(() => {});
+  };
 
   useEffect(() => {
     getForecastWeather()
@@ -62,12 +64,15 @@ function App() {
       .catch(() => console.log("Error!"));
   }, []);
 
-  // useEffect(() => {
-  //   Get()
-  //     .then((cards) => {})
-  //     .catch(() => console.log("Error!"));
-  // }, []);
-  //////////////////////////////////
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    Get()
+      .then((res) => {
+        setCards(res);
+      })
+      .catch(() => console.log("Error!"));
+  }, []);
 
   return (
     <div>
@@ -81,10 +86,10 @@ function App() {
         />
         <Switch>
           <Route exact path="/">
-            <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
+            <Main weatherTemp={temp} onSelectCard={handleSelectedCard} currentCards={cards}/>
           </Route>
           <Route path="/profile">
-            <Profile onCreateModal={handleCreateModal} />
+            <Profile onCreateModal={handleCreateModal} onSelectCard={handleSelectedCard} currentCards={cards}/>
           </Route>
         </Switch>
         <Footer />
@@ -152,7 +157,7 @@ function App() {
           </ModalWithForm>
         )}
         {activeModal === "preview" && (
-          <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+          <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} onDelete={handleDeleteCard} />
         )}
       </CurrentTemperatureUnitContext.Provider>
     </div>
