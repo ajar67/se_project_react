@@ -14,7 +14,7 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
     setName("");
     setImageUrl("");
     setWeather("");
-  })
+  });
 
   return (
     <>

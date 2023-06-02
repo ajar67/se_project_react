@@ -42,34 +42,42 @@ function App() {
     setSelectedCard(card);
   };
 
+  const [initialCards, setInitialCards] = useState([]);
+
+  useEffect(() => {
+    Get()
+      .then((res) => {
+        setInitialCards(res);
+      })
+      .catch(() => console.log("Error!"));
+  });
+
+
   const handleDeleteCard = (card) => {
     Delete(card.id)
       .then(() => {
         card.remove();
+        card.null();
       })
       .catch((err) => console.log(err))
       .finally(() => handleCloseModal);
   };
 
-   const handleAddItemSubmit = () => {
-     Post.then(() => {});
+  /////////////////////////////////////////
+  const [cards, setCards] = useState(initialCards);
+
+  const handleAddItemSubmit = (inputValue) => {
+     Post({name: inputValue.name, imageUrl: inputValue.imageUrl, weather: inputValue.weather}).then((item) => {
+         setCards([item, ...cards])
+     });
   };
+  ////////////////////////////////////////////////////
 
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
         const temperature = parseWeatherData(data);
         setTemp(temperature);
-      })
-      .catch(() => console.log("Error!"));
-  }, []);
-
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    Get()
-      .then((res) => {
-        setCards(res);
       })
       .catch(() => console.log("Error!"));
   }, []);
@@ -86,10 +94,18 @@ function App() {
         />
         <Switch>
           <Route exact path="/">
-            <Main weatherTemp={temp} onSelectCard={handleSelectedCard} currentCards={cards}/>
+            <Main
+              weatherTemp={temp}
+              onSelectCard={handleSelectedCard}
+              currentCards={initialCards}
+            />
           </Route>
           <Route path="/profile">
-            <Profile onCreateModal={handleCreateModal} onSelectCard={handleSelectedCard} currentCards={cards}/>
+            <Profile
+              onCreateModal={handleCreateModal}
+              onSelectCard={handleSelectedCard}
+              currentCards={initialCards}
+            />
           </Route>
         </Switch>
         <Footer />
@@ -98,6 +114,7 @@ function App() {
             title="New Garment"
             buttonText="Add garment"
             onClose={handleCloseModal}
+            onAddItem={handleAddItemSubmit}
           >
             <label className="modal__info">
               Name
@@ -157,7 +174,11 @@ function App() {
           </ModalWithForm>
         )}
         {activeModal === "preview" && (
-          <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} onDelete={handleDeleteCard} />
+          <ItemModal
+            selectedCard={selectedCard}
+            onClose={handleCloseModal}
+            onDelete={handleDeleteCard}
+          />
         )}
       </CurrentTemperatureUnitContext.Provider>
     </div>

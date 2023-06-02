@@ -2,7 +2,7 @@ import "./ModalWithForm.css";
 import closeImage from "../../images/closeGrey.svg";
 import React from "react";
 
-const ModalWithForm = ({ title, children, buttonText, onClose, name }) => {
+const ModalWithForm = ({ title, children, buttonText, onClose, name, onAddItem }) => {
   return (
     <div className={`modal modal__type_${name}`}>
       <div className="modal__content">
@@ -11,7 +11,7 @@ const ModalWithForm = ({ title, children, buttonText, onClose, name }) => {
         </button>
         <h3 className="modal__title">{title}</h3>
         <form className="modal__form">{children}</form>
-        <button className="modal__button-submit" type="submit">
+        <button className="modal__button-submit" type="submit" onClick={onAddItem}>
           {buttonText}
         </button>
       </div>

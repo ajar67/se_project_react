@@ -4,7 +4,7 @@ function Get() {
   return fetch(`${baseURL}/items`).then(processResponseServer);
 }
 
-function Post(name, imageUrl, weather) {
+function Post({ name, imageUrl, weather }) {
   return fetch(`${baseURL}/items`, {
     method: "POST",
     body: JSON.stringify({
@@ -16,7 +16,7 @@ function Post(name, imageUrl, weather) {
 }
 
 function Delete(id) {
-  return fetch(`${baseURL}/items/:${id}`, {
+  return fetch(`${baseURL}/items/${id}`, {
     method: "DELETE",
   }).then(processResponseServer);
 }

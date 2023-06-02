@@ -11,7 +11,6 @@ function Main({ weatherTemp, onSelectCard, currentCards }) {
   );
   const getWeatherType = () => {
     const temp = weatherTemp && weatherTemp[currentTemperatureUnit];
-    console.log(temp);
     if (temp >= 86) {
       return "hot";
     } else if (temp >= 66 && temp <= 85) {

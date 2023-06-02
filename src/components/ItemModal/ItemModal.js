@@ -10,7 +10,7 @@ const ItemModal = ({ selectedCard, onClose, onDelete }) => {
           <img src={closeImage} alt="close button" className="modal__close" />
         </button>
         <img
-          src={selectedCard.link}
+          src={selectedCard.imageUrl}
           className="modal__image"
           alt="close button"
         />
@@ -23,7 +23,7 @@ const ItemModal = ({ selectedCard, onClose, onDelete }) => {
             <button
               type="button"
               className="modal__button-delete"
-              onClick={onDelete}
+              onClick={() => onDelete(selectedCard)}
             >
               Delete item
             </button>
