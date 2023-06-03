@@ -6,7 +6,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import React, { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
 import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
-import { CurrentTemperatureUnitContext } from "../../Contexts/CurrentTemperatureUnitContext";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import Profile from "../Profile/Profile";
 import { Route, Switch } from "react-router-dom";
 //import AddItemModal from "../AddItemModal/AddItemModal";
@@ -24,9 +24,9 @@ function App() {
     //   ? setCurrentTemperatureUnit("C")
     //   : setCurrentTemperatureUnit("F");
 
-    if(currentTemperatureUnit === "F"){
+    if (currentTemperatureUnit === "F") {
       setCurrentTemperatureUnit("C");
-    } else{
+    } else {
       setCurrentTemperatureUnit("F");
     }
   };

@@ -18,7 +18,7 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
 
   return (
     <>
-      <ModalWithForm title="New Garment" buttonText="Add garment" onClose={onCloseModal}>
+      <ModalWithForm title="New Garment" buttonText="Add garment" onClose={onCloseModal} >
         <label className="modal__info">
           Name
           <input
