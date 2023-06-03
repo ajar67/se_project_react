@@ -1,4 +1,4 @@
-.header__input {
+.switch {
   display: flex;
   border-radius: 20px;
   appearance: none;
@@ -35,7 +35,7 @@
   box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
 }
 
-.header__input:checked + .header__label .header__switch-button {
+.switch:checked + .header__label .header__switch-button {
   left: calc(100% - 2px);
   transform: translateX(-100%);
 }

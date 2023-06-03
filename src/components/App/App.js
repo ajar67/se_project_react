@@ -20,13 +20,20 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleToggleSwitchChange = () => {
-    currentTemperatureUnit === "F"
-      ? setCurrentTemperatureUnit("C")
-      : setCurrentTemperatureUnit("F");
+    // currentTemperatureUnit === "F"
+    //   ? setCurrentTemperatureUnit("C")
+    //   : setCurrentTemperatureUnit("F");
+
+    if(currentTemperatureUnit === "F"){
+      setCurrentTemperatureUnit("C");
+    } else{
+      setCurrentTemperatureUnit("F");
+    }
   };
 
   const handleChangedCheck = () => {
     setChecked(!checked);
+    handleToggleSwitchChange();
   };
 
   const handleCreateModal = () => {
@@ -44,29 +51,16 @@ function App() {
 
   const [initialCards, setInitialCards] = useState([]);
 
-  useEffect(() => {
-    Get()
-      .then((res) => {
-        setInitialCards(res);
-      })
-      .catch(() => console.log("Error!"));
-  });
-
-  const handleDeleteCard = (card) => {
-    Delete(card.id)
+  const handleDeleteCard = (deleteCard) => {
+    Delete(deleteCard.id)
       .then(() => {
-        setCards((card) => {
-          card.filter((cards) => {
-            return !(cards.id === card.id);
-          });
-        });
+        const filterCards = initialCards.filter((x) => deleteCard.id !== x.id);
+        console.log(filterCards, initialCards, deleteCard);
+        setInitialCards(filterCards);
       })
       .catch((err) => console.log(err))
       .finally(handleCloseModal);
   };
-
-  /////////////////////////////////////////
-  const [cards, setCards] = useState(initialCards);
 
   const handleAddItemSubmit = (inputValue) => {
     Post({
@@ -75,18 +69,22 @@ function App() {
       weather: inputValue.weather,
     })
       .then((item) => {
-        setCards([item, ...cards]);
+        setInitialCards([item, ...initialCards]);
       })
       .catch((err) => console.log(err))
       .finally(handleCloseModal);
   };
-  ////////////////////////////////////////////////////
 
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
         const temperature = parseWeatherData(data);
         setTemp(temperature);
+        Get()
+          .then((res) => {
+            setInitialCards(res);
+          })
+          .catch(() => console.log("Error!"));
       })
       .catch(() => console.log("Error!"));
   }, []);

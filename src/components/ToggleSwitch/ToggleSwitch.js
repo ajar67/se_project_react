@@ -6,13 +6,13 @@ const ToggleSwitch = ({ value, onChange }) => {
   //const {currentTemperatureUnit} = React.useContext(CurrentTemperatureUnitContext);
   return (
     <>
-      <input
-        className="header__input"
-        type="checkbox"
-        checked={value}
-        onChange={onChange}
-      />
       <label className="header__label">
+        <input
+          className="switch"
+          type="checkbox"
+          checked={value}
+          onChange={onChange}
+        />
         <span className="header__switch-button" />
       </label>
     </>
