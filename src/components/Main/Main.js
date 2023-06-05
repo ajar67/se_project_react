@@ -22,7 +22,6 @@ function Main({ weatherTemp, onSelectCard, currentCards }) {
   const weatherType = getWeatherType();
 
   const filteredCards = currentCards.filter((item) => {
-    debugger;
     return item.weather.toLowerCase() === weatherType;
   });
 

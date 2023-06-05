@@ -2,14 +2,13 @@ import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import React, { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
 import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import Profile from "../Profile/Profile";
 import { Route, Switch } from "react-router-dom";
-//import AddItemModal from "../AddItemModal/AddItemModal";
+import AddItemModal from "../AddItemModal/AddItemModal";
 import { Get, Delete, Post } from "../../utils/api";
 
 function App() {
@@ -55,16 +54,15 @@ function App() {
       .finally(handleCloseModal);
   };
 
-  function handleAddItemSubmit({ nameValue, imageValue, weatherValue }) {
+  function handleAddItemSubmit({ name, imageUrl, weather }) {
     Post({
-      name: nameValue,
-      imageUrl: imageValue,
-      weather: weatherValue,
+      name: name,
+      imageUrl: imageUrl,
+      weather: weather,
     })
       .then((item) => {
-        const card = { ...item, nameValue, imageValue, weatherValue };
+        const card = { ...item, name, imageUrl, weather };
         setInitialCards([card, ...initialCards]);
-        console.log(card);
       })
       .catch((err) => console.log(err))
       .finally(handleCloseModal);
@@ -112,68 +110,12 @@ function App() {
         </Switch>
         <Footer />
         {activeModal === "create" && (
-          <ModalWithForm
-            title="New Garment"
-            buttonText="Add garment"
-            onClose={handleCloseModal}
+          <AddItemModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "create"}
             onAddItem={handleAddItemSubmit}
-          >
-            <label className="modal__info">
-              Name
-              <input
-                className="modal__input"
-                type="text"
-                name="name"
-                minLength="1"
-                maxLength="30"
-                placeholder="Name"
-              />
-            </label>
-            <label className="modal__info">
-              Image
-              <input
-                className="modal__input"
-                type="url"
-                name="link"
-                minLength="1"
-                maxLength="30"
-                placeholder="ImageURL"
-              />
-            </label>
-            <p className="modal__info">Select the weather type:</p>
-            <div>
-              <div>
-                <input
-                  className="modal__radio"
-                  type="radio"
-                  id="hot"
-                  value="hot"
-                  name="radio"
-                />
-                <label className="modal__label">Hot</label>
-              </div>
-              <div>
-                <input
-                  className="modal__radio"
-                  type="radio"
-                  id="warm"
-                  value="warm"
-                  name="radio"
-                />
-                <label className="modal__label">Warm</label>
-              </div>
-              <div>
-                <input
-                  className="modal__radio"
-                  type="radio"
-                  id="cold"
-                  value="cold"
-                  name="radio"
-                />
-                <label className="modal__label">Cold</label>
-              </div>
-            </div>
-          </ModalWithForm>
+            onSelectCard={handleSelectedCard}
+          />
         )}
         {activeModal === "preview" && (
           <ItemModal
