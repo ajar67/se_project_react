@@ -6,19 +6,20 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
   const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
 
-  function handleSubmit(evt) {
-    evt.preventDefault();
-  }
-
   useEffect(() => {
     setName("");
     setImageUrl("");
     setWeather("");
   });
 
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    onAddItem({nameValue: setName(evt.target.value), imageValue: setImageUrl(evt.target.value), weatherValue: setWeather(evt.target.value)});
+  }
+
   return (
     <>
-      <ModalWithForm title="New Garment" buttonText="Add garment" onClose={onCloseModal} >
+      <ModalWithForm title="New Garment" buttonText="Add garment" onClose={onCloseModal} onAddItem={handleSubmit}>
         <label className="modal__info">
           Name
           <input
@@ -29,7 +30,7 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
             minLength="1"
             maxLength="30"
             placeholder="Name"
-            onChange={(evt) => setName(evt.target.value)}
+            //onChange={(evt) => setName(evt.target.value)}
           />
         </label>
         <label className="modal__info">
@@ -42,7 +43,7 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
             minLength="1"
             maxLength="30"
             placeholder="ImageURL"
-            onChange={(evt) => setImageUrl(evt.target.value)}
+            //onChange={(evt) => setImageUrl(evt.target.value)}
           />
         </label>
         <p className="modal__info">Select the weather type:</p>
@@ -54,7 +55,7 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
               id="hot"
               value="hot"
               name="radio"
-              onChange={(evt) => setWeather(evt.target.value)}
+              //onChange={(evt) => setWeather(evt.target.value)}
             />
             <label className="modal__label">Hot</label>
           </div>
@@ -65,7 +66,7 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
               id="warm"
               value="warm"
               name="radio"
-              onChange={(evt) => setWeather(evt.target.value)}
+              //onChange={(evt) => setWeather(evt.target.value)}
             />
             <label className="modal__label">Warm</label>
           </div>
@@ -76,7 +77,7 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
               id="cold"
               value="cold"
               name="radio"
-              onChange={(evt) => setWeather(evt.target.value)}
+              //onChange={(evt) => setWeather(evt.target.value)}
             />
             <label className="modal__label">Cold</label>
           </div>

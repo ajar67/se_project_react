@@ -1,5 +1,5 @@
 import "./ToggleSwitch.css";
-//import { CurrentTemperatureUnitContext } from "../../Contexts/CurrentTemperatureUnitContext";
+//import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import React from "react";
 
 const ToggleSwitch = ({ value, onChange }) => {
@@ -7,6 +7,7 @@ const ToggleSwitch = ({ value, onChange }) => {
   return (
     <>
       <label className="header__label">
+        <a className="header__letter header__letter_f">F</a>
         <input
           className="switch"
           type="checkbox"
@@ -14,6 +15,7 @@ const ToggleSwitch = ({ value, onChange }) => {
           onChange={onChange}
         />
         <span className="header__switch-button" />
+        <a className="header__letter header__letter_c">C</a>
       </label>
     </>
   );

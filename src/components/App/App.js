@@ -20,15 +20,9 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleToggleSwitchChange = () => {
-    // currentTemperatureUnit === "F"
-    //   ? setCurrentTemperatureUnit("C")
-    //   : setCurrentTemperatureUnit("F");
-
-    if (currentTemperatureUnit === "F") {
-      setCurrentTemperatureUnit("C");
-    } else {
-      setCurrentTemperatureUnit("F");
-    }
+    currentTemperatureUnit === "F"
+      ? setCurrentTemperatureUnit("C")
+      : setCurrentTemperatureUnit("F");
   };
 
   const handleChangedCheck = () => {
@@ -55,25 +49,26 @@ function App() {
     Delete(deleteCard.id)
       .then(() => {
         const filterCards = initialCards.filter((x) => deleteCard.id !== x.id);
-        console.log(filterCards, initialCards, deleteCard);
         setInitialCards(filterCards);
       })
       .catch((err) => console.log(err))
       .finally(handleCloseModal);
   };
 
-  const handleAddItemSubmit = (inputValue) => {
+  function handleAddItemSubmit({ nameValue, imageValue, weatherValue }) {
     Post({
-      name: inputValue.name,
-      imageUrl: inputValue.imageUrl,
-      weather: inputValue.weather,
+      name: nameValue,
+      imageUrl: imageValue,
+      weather: weatherValue,
     })
       .then((item) => {
-        setInitialCards([item, ...initialCards]);
+        const card = { ...item, nameValue, imageValue, weatherValue };
+        setInitialCards([card, ...initialCards]);
+        console.log(card);
       })
       .catch((err) => console.log(err))
       .finally(handleCloseModal);
-  };
+  }
 
   useEffect(() => {
     getForecastWeather()

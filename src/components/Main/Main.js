@@ -22,16 +22,18 @@ function Main({ weatherTemp, onSelectCard, currentCards }) {
   const weatherType = getWeatherType();
 
   const filteredCards = currentCards.filter((item) => {
+    debugger;
     return item.weather.toLowerCase() === weatherType;
   });
 
-  const todayTemp = (weatherTemp && weatherTemp[currentTemperatureUnit]) || "";
+  const todayTemp = weatherTemp && weatherTemp[currentTemperatureUnit];
+  console.log(weatherTemp);
 
   return (
     <main className="main">
       <WeatherCard day={false} type="Cloudy" weatherTemp={weatherTemp} />
       <section className="card__section">
-        Today is {todayTemp}°F/ you may want to wear:
+        Today is {todayTemp}/ you may want to wear:
         <div className="card__items">
           {filteredCards.map((item) => (
             <ItemCard item={item} key={item.id} onSelectCard={onSelectCard} />
