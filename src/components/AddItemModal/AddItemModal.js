@@ -21,11 +21,11 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal, onSelectCard }) => {
     setWeather(e.target.value);
   };
 
-  useEffect(() => {
-    setName("");
-    setImageUrl("");
-    setWeather("");
-  });
+  // useEffect(() => {
+  //   setName("");
+  //   setImageUrl("");
+  //   setWeather("");
+  // });
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -63,7 +63,7 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal, onSelectCard }) => {
             type="url"
             name="link"
             minLength="1"
-            maxLength="30"
+            maxLength="300"
             placeholder="ImageURL"
             onChange={handleImageChange}
           />
