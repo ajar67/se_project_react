@@ -1,9 +1,9 @@
 import "./ToggleSwitch.css";
-//import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import React from "react";
 
 const ToggleSwitch = ({ value, onChange }) => {
-  //const {currentTemperatureUnit} = React.useContext(CurrentTemperatureUnitContext);
+  const {currentTemperatureUnit} = React.useContext(CurrentTemperatureUnitContext);
   return (
     <>
       <label className="header__label">
