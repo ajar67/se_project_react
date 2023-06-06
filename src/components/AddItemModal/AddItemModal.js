@@ -32,7 +32,7 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal, onSelectCard }) => {
     onAddItem({ name, imageUrl, weather });
   }
 
-  const item = [name, imageUrl, weather];
+  const item = [{name: name, imageUrl: imageUrl, weather: weather}];
 
   return (
     <>
