@@ -11,14 +11,26 @@ function Main({ weatherTemp, onSelectCard, currentCards }) {
   );
   const getWeatherType = () => {
     const temp = weatherTemp && weatherTemp[currentTemperatureUnit];
-    if (temp >= 86) {
-      return "hot";
-    } else if (temp >= 66 && temp <= 85) {
-      return "warm";
-    } else if (temp <= 65) {
-      return "cold";
+
+    if (currentTemperatureUnit === "F") {
+      if (temp >= 86) {
+        return "hot";
+      } else if (temp >= 66 && temp <= 85) {
+        return "warm";
+      } else if (temp <= 65) {
+        return "cold";
+      }
+    } else {
+      if (temp >= 30) {
+        return "hot";
+      } else if (temp >= 18.8889 && temp <= 29.444) {
+        return "warm";
+      } else if (temp <= 18.3334) {
+        return "cold";
+      }
     }
   };
+
   const weatherType = getWeatherType();
 
   const filteredCards = currentCards.filter((item) => {

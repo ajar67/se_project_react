@@ -9,7 +9,7 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import Profile from "../Profile/Profile";
 import { Route, Switch } from "react-router-dom";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { Get, Delete, Post } from "../../utils/api";
+import { getItems, addItem, deleteItem } from "../../utils/api";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -17,6 +17,7 @@ function App() {
   const [temp, setTemp] = useState(0);
   const [checked, setChecked] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F"
@@ -37,6 +38,22 @@ function App() {
     setActiveModal("");
   };
 
+  const handleLoading = () => {
+    setIsLoading(!isLoading);
+  };
+
+  useEffect(() => {
+    const closeByEscape = (e) => {
+      if (e.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener("keydown", closeByEscape);
+
+    return () => document.removeEventListener("keydown", closeByEscape);
+  }, []);
+
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
@@ -45,17 +62,20 @@ function App() {
   const [initialCards, setInitialCards] = useState([]);
 
   const handleDeleteCard = (deleteCard) => {
-    Delete(deleteCard.id)
+    handleLoading();
+    deleteItem(deleteCard.id)
       .then(() => {
         const filterCards = initialCards.filter((x) => deleteCard.id !== x.id);
         setInitialCards(filterCards);
+        handleCloseModal();
       })
       .catch((err) => console.log(err))
-      .finally(handleCloseModal);
+      .finally(handleLoading);
   };
 
   function handleAddItemSubmit({ name, imageUrl, weather }) {
-    Post({
+    handleLoading();
+    addItem({
       name: name,
       imageUrl: imageUrl,
       weather: weather,
@@ -63,9 +83,10 @@ function App() {
       .then((item) => {
         const card = { ...item, name, imageUrl, weather };
         setInitialCards([card, ...initialCards]);
+        handleCloseModal();
       })
       .catch((err) => console.log(err))
-      .finally(handleCloseModal);
+      .finally(handleLoading);
   }
 
   useEffect(() => {
@@ -73,7 +94,7 @@ function App() {
       .then((data) => {
         const temperature = parseWeatherData(data);
         setTemp(temperature);
-        Get()
+        getItems()
           .then((res) => {
             setInitialCards(res);
           })
@@ -111,10 +132,11 @@ function App() {
         <Footer />
         {activeModal === "create" && (
           <AddItemModal
-            handleCloseModal={handleCloseModal}
+            onCloseModal={handleCloseModal}
             isOpen={activeModal === "create"}
-            onAddItem={handleAddItemSubmit}
+            onSubmit={handleAddItemSubmit}
             onSelectCard={handleSelectedCard}
+            buttonText={isLoading ? "Saving..." : "Save"}
           />
         )}
         {activeModal === "preview" && (

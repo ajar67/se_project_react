@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import ItemCard from "../ItemCard/ItemCard";
 
-const AddItemModal = ({ isOpen, onAddItem, onCloseModal, onSelectCard }) => {
+const AddItemModal = ({ isOpen, onSubmit, onCloseModal, buttonText }) => {
   const [name, setName] = useState("");
   const handleNameChange = (e) => {
     console.log(e.target.value);
@@ -29,18 +28,18 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal, onSelectCard }) => {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    onAddItem({ name, imageUrl, weather });
+    onSubmit({ name, imageUrl, weather });
   }
 
-  const item = [{name: name, imageUrl: imageUrl, weather: weather}];
+  const item = [{ name: name, imageUrl: imageUrl, weather: weather }];
 
   return (
     <>
       <ModalWithForm
         title="New Garment"
-        buttonText="Add garment"
+        buttonText={buttonText}
         onClose={onCloseModal}
-        onAddItem={handleSubmit}
+        onSubmit={handleSubmit}
       >
         <label className="modal__info">
           Name
@@ -105,7 +104,6 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal, onSelectCard }) => {
           </div>
         </div>
       </ModalWithForm>
-      {isOpen && (<ItemCard item={item} onSelectCard={onSelectCard} />)}
     </>
   );
 };

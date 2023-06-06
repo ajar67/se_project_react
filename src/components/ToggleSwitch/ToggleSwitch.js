@@ -5,7 +5,6 @@ import React from "react";
 const ToggleSwitch = ({ value, onChange }) => {
   const {currentTemperatureUnit} = React.useContext(CurrentTemperatureUnitContext);
   return (
-    <>
       <label className="header__label">
         <a className="header__letter header__letter_f">F</a>
         <input
@@ -17,7 +16,6 @@ const ToggleSwitch = ({ value, onChange }) => {
         <span className="header__switch-button" />
         <a className="header__letter header__letter_c">C</a>
       </label>
-    </>
   );
 };
 
