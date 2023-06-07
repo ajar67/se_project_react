@@ -39,10 +39,11 @@ function App() {
   };
 
   const handleLoading = () => {
-    setIsLoading(!isLoading);
+    setIsLoading((state) => !state);
   };
 
   useEffect(() => {
+    if (!activeModal) return;
     const closeByEscape = (e) => {
       if (e.key === "Escape") {
         handleCloseModal();
@@ -52,7 +53,7 @@ function App() {
     document.addEventListener("keydown", closeByEscape);
 
     return () => document.removeEventListener("keydown", closeByEscape);
-  }, []);
+  }, [activeModal]);
 
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
@@ -69,7 +70,7 @@ function App() {
         setInitialCards(filterCards);
         handleCloseModal();
       })
-      .catch((err) => console.log(err))
+      .catch(console.error)
       .finally(handleLoading);
   };
 
@@ -85,7 +86,7 @@ function App() {
         setInitialCards([card, ...initialCards]);
         handleCloseModal();
       })
-      .catch((err) => console.log(err))
+      .catch(console.error)
       .finally(handleLoading);
   }
 
@@ -93,8 +94,6 @@ function App() {
     getForecastWeather()
       .then((data) => {
         const temperature = parseWeatherData(data);
-        console.log(131213123);
-        console.log(temperature);
         setTemp(temperature);
         getItems()
           .then((res) => {
