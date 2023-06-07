@@ -23,7 +23,7 @@ const Header = ({ onCreateModal, value, onChange }) => {
       </Link>
       <div className="header__section-two">
         <ToggleSwitch value={value} onChange={onChange} />
-        <button type="text" className="header__button" onClick={onCreateModal}>
+        <button type="button" className="header__button" onClick={onCreateModal}>
           + Add clothes
         </button>
         <Link to="/profile">

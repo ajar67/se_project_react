@@ -14,8 +14,8 @@ import { getItems, addItem, deleteItem } from "../../utils/api";
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  const [temp, setTemp] = useState(0);
-  const [checked, setChecked] = useState(false);
+  const [temp, setTemp] = useState(0); // here we wil have an object, like: { C: 4, F: 17 }
+  const [checked, setChecked] = useState(false); // either true or false
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -93,6 +93,8 @@ function App() {
     getForecastWeather()
       .then((data) => {
         const temperature = parseWeatherData(data);
+        console.log(131213123);
+        console.log(temperature);
         setTemp(temperature);
         getItems()
           .then((res) => {

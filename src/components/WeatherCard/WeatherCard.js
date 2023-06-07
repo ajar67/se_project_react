@@ -11,6 +11,7 @@ const WeatherCard = ({ day, type, weatherTemp = "" }) => {
     return item.day === day && item.type === type;
   });
   const imageSrcUrl = weatherOption.url || "";
+
   return (
     <section className="weather">
       <div className="weather__info">
