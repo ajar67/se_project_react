@@ -2,7 +2,14 @@ import "./ModalWithForm.css";
 import closeImage from "../../images/closeGrey.svg";
 import React from "react";
 
-const ModalWithForm = ({ title, children, buttonText, onClose, name, onSubmit }) => {
+const ModalWithForm = ({
+  title,
+  children,
+  buttonText,
+  onClose,
+  name,
+  onSubmit,
+}) => {
   return (
     <div className={`modal modal__type_${name}`}>
       <div className="modal__content">
