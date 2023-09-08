@@ -1,17 +1,40 @@
 import "./ItemCard.css";
 import React from "react";
-const ItemCard = ({ item, onSelectCard }) => (
-  <div>
+import likeButton from "../../images/likeButton.svg";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+
+const ItemCard = ({ item, onSelectCard, onCardLike }) => {
+  const { currentUser } = React.useContext(CurrentUserContext);
+  function handleLikeClick() {
+    onCardLike(item);
+  }
+  const isLiked = item.likes.some((id) => id === currentUser._id);
+  const itemLikeButtonClassName = `card__button-like ${
+    isLiked ? "card__button-like_visible" : "card__button-like_hidden"
+  }`;
+
+  return (
     <div>
-      <img
-        src={item.imageUrl}
-        alt={item.name}
-        className="card__image"
-        onClick={() => onSelectCard(item)}
-      />
+      <div className="card__inform">
+        <div className="card__name">{item.name}</div>
+        <button
+          type="button"
+          className={itemLikeButtonClassName}
+          onClick={handleLikeClick}
+        >
+          {likeButton}
+        </button>
+      </div>
+      <div className="card__pic">
+        <img
+          src={item.imageUrl}
+          alt={item.name}
+          className="card__image"
+          onClick={() => onSelectCard(item)}
+        />
+      </div>
     </div>
-    <div className="card__name">{item.name}</div>
-  </div>
-);
+  );
+};
 
 export default ItemCard;

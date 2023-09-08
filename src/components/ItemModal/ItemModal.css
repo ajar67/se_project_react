@@ -58,7 +58,7 @@
   gap: 12px;
 }
 
-.modal__button-delete {
+.modal__button-delete_visible {
   font-family: "Cabinet Grotesk", sans-serif;
   font-style: normal;
   font-weight: 700;
@@ -67,4 +67,8 @@
   color: #ff4d00;
   border: none;
   background: none;
+}
+
+.modal__button-delete_hidden {
+  display: hidden;
 }

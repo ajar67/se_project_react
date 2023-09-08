@@ -8,3 +8,11 @@
   border-radius: 10px;
   cursor: pointer;
 }
+
+.card__button-like_visible {
+  display: inline-block;
+}
+
+.card__button-like_hidden {
+  display: hidden;
+}

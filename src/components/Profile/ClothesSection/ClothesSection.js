@@ -1,8 +1,13 @@
 import ItemCard from "../../ItemCard/ItemCard";
 import React from "react";
 import "./ClothesSection.css";
+import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 
 const ClothesSection = ({ onCreateModal, currentCards, onSelectCard }) => {
+  const {currentUser} = React.useContext(CurrentUserContext);
+  const userCards = currentCards.map((card) => {
+    return card.owner._id === currentUser._id
+  });
   return (
     <div className="clothes">
       <div className="clothes__section">
@@ -17,7 +22,7 @@ const ClothesSection = ({ onCreateModal, currentCards, onSelectCard }) => {
           </button>
         </div>
         <section className="clothes__cards">
-          {currentCards.map((item) => (
+          {userCards.map((item) => (
             <ItemCard item={item} key={item.id} onSelectCard={onSelectCard} />
           ))}
         </section>
