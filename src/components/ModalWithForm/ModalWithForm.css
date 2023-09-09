@@ -56,8 +56,18 @@
   width: 124px;
   color: white;
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
 }
 
 .modal__button-submit:hover {
   opacity: 0.6;
 }
+
+.modal__button_two {
+  background-color: blue;
+  border: none;
+  width: 80px;
+  height: 30px;
+}
+
