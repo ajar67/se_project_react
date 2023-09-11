@@ -31,6 +31,14 @@ function App() {
   const [checked, setChecked] = useState(false); // either true or false
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [isLoading, setIsLoading] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [initialCards, setInitialCards] = useState([]);
+  const [openLoginModal, setLoginModal] = useState("");
+  const [openRegisterModal, setRegisterModal] = useState("");
+  const [openEditProfileModal, setEditProfileModal] = useState("");
+  const [token, setToken] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
 
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F"
@@ -73,7 +81,6 @@ function App() {
     setSelectedCard(card);
   };
 
-  const [initialCards, setInitialCards] = useState([]);
 
   const handleDeleteCard = (deleteCard) => {
     handleLoading();
@@ -116,7 +123,6 @@ function App() {
       .finally(handleLoading);
   }
 
-  const [openLoginModal, setLoginModal] = useState("");
   const handleLoginModal = () => {
     handleCloseRegisterModal();
     setLoginModal("create");
@@ -134,6 +140,7 @@ function App() {
           //localStorage.setItem('jwt', res.jwt)
           setIsLoggedIn(true);
           handleCloseModal();
+          setCurrentUser({ name, avatar});
           //history.push() maybe
         }
       })
@@ -141,7 +148,6 @@ function App() {
       .finally(handleLoading);
   }
 
-  const [openRegisterModal, setRegisterModal] = useState("");
   const handleRegisterModal = () => {
     handleCloseLoginModal();
     setRegisterModal("create");
@@ -150,7 +156,6 @@ function App() {
     setRegisterModal("");
   };
 
-  const [openEditProfileModal, setEditProfileModal] = useState("");
   const handleEditProfileModal = () => {
     setEditProfileModal("create");
   };
@@ -182,7 +187,6 @@ function App() {
       .catch(() => console.log("Error!"));
   }, []);
 
-  const [token, setToken] = useState(null);
   const history = useHistory();
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
@@ -198,10 +202,7 @@ function App() {
     } else {
       history.push("/login");
     }
-  }, []);
-
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
+  }, []);  
 
   const logout = () => {
     const history = useHistory("");
@@ -210,7 +211,6 @@ function App() {
     history.push("/login");
   };
 
-  const [currentUser, setCurrentUser] = useState(null);
 
   ////////////////////////////////////////////from the breif /////////////////////
 

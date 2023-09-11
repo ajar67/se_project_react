@@ -19,6 +19,7 @@ const Header = ({
   });
 
   const { currentUser } = React.useContext(CurrentUserContext);
+  console.log(currentUser);
 
   return (
     <header className="header">
