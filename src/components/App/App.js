@@ -39,7 +39,6 @@ function App() {
   const [token, setToken] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F"
       ? setCurrentTemperatureUnit("C")
@@ -80,7 +79,6 @@ function App() {
     setActiveModal("preview");
     setSelectedCard(card);
   };
-
 
   const handleDeleteCard = (deleteCard) => {
     handleLoading();
@@ -140,7 +138,7 @@ function App() {
           //localStorage.setItem('jwt', res.jwt)
           setIsLoggedIn(true);
           handleCloseModal();
-          setCurrentUser({ name, avatar});
+          setCurrentUser({ name, avatar });
           //history.push() maybe
         }
       })
@@ -187,7 +185,6 @@ function App() {
       .catch(() => console.log("Error!"));
   }, []);
 
-  const history = useHistory();
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
@@ -199,23 +196,22 @@ function App() {
           return res;
         })
         .catch((err) => console.log("Invalid token: ", err));
-    } else {
-      history.push("/login");
     }
-  }, []);  
+  }, []);
+
+  const history = useHistory('');
 
   const logout = () => {
-    const history = useHistory("");
     setIsLoggedIn(false);
     localStorage.removeItem("jwt");
-    history.push("/login");
+    history.push('/login');
   };
 
+  const [clothingItems, setClothingItems] = useState("");
 
   ////////////////////////////////////////////from the breif /////////////////////
 
   const handleLikeClick = ({ id, isLiked, user }) => {
-    const [clothingItems, setClothingItems] = useState("");
     console.log(clothingItems);
     const token = localStorage.getItem("jwt");
     isLiked
