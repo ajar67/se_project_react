@@ -40,6 +40,12 @@
   opacity: 0.6;
 }
 
+.header__logged{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
 .header__name {
   font-family: "Cabinet Grotesk", sans-serif;
   font-style: normal;

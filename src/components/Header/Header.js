@@ -34,7 +34,7 @@ const Header = ({
       <div className="header__section-two">
         <ToggleSwitch value={value} onChange={onChange} />
         {loggedIn ? (
-          <div>
+          <div className='header__logged'>
             <button
               type="button"
               className="header__button"

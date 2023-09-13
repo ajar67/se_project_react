@@ -121,6 +121,7 @@ function App() {
             .then((data) => {
               setCurrentUser(data);
               console.log(data);
+              setIsLoggedIn(true);
             })
             .catch((err) => console.log("Token failure: ", err));
         }
