@@ -28,7 +28,7 @@ const Header = ({
           <div>
             <img src={logoImage} className="header__logo" alt="logo" />
           </div>
-          <div className="header__date">{currentDate}</div>
+          <div className="header__date">{currentDate}, Connecticut</div>
         </div>
       </Link>
       <div className="header__section-two">

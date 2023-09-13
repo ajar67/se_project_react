@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const RegisterModal = ({isOpen, onCloseModal, onSubmit, buttonText, onCreateLoginModal }) => { 
+const RegisterModal = ({
+  isOpen,
+  onCloseModal,
+  onSubmit,
+  buttonText,
+  onCreateLoginModal,
+}) => {
   const [email, setEmail] = useState("");
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -23,15 +29,15 @@ const RegisterModal = ({isOpen, onCloseModal, onSubmit, buttonText, onCreateLogi
   };
 
   useEffect(() => {
-    setEmail('');
-    setPassword('');
-    setName('');
-    setAvatar('');
+    setEmail("");
+    setPassword("");
+    setName("");
+    setAvatar("");
   }, [isOpen]);
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    onSubmit({email, password, name, avatar});
+    onSubmit({ email, password, name, avatar });
   }
 
   return (
@@ -93,7 +99,11 @@ const RegisterModal = ({isOpen, onCloseModal, onSubmit, buttonText, onCreateLogi
           onChange={handleAvatarChange}
         />
       </label>
-      <button className="modal__button_two" type="button" onClick={onCreateLoginModal} >
+      <button
+        className="modal__button_two modal__button_register"
+        type="button"
+        onClick={onCreateLoginModal}
+      >
         or Log in
       </button>
     </ModalWithForm>

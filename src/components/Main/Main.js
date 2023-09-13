@@ -32,10 +32,11 @@ function Main({ weatherTemp, onSelectCard, currentCards, onCardLike }) {
   };
 
   const weatherType = getWeatherType();
+  console.log(currentCards);
+  console.log(weatherType)
 
-  const filteredCards = currentCards.filter((item) => {
-    return item.weather.toLowerCase() === weatherType;
-  });
+  const filteredCards = currentCards.filter((item) => item.weather.toLowerCase() === weatherType);
+  console.log(filteredCards);
 
   const todayTemp = weatherTemp && weatherTemp[currentTemperatureUnit];
   console.log(todayTemp + "°" + currentTemperatureUnit);

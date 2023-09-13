@@ -36,7 +36,7 @@ function App() {
   const [openLoginModal, setLoginModal] = useState("");
   const [openRegisterModal, setRegisterModal] = useState("");
   const [openEditProfileModal, setEditProfileModal] = useState("");
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleToggleSwitchChange = () => {
@@ -115,7 +115,15 @@ function App() {
       .then((res) => {
         if (res) {
           localStorage.setItem("jwt", res.token);
+          auth
+            .checkToken(res.token)
+            .then((data) => {
+              setCurrentUser(data);
+              console.log(data);
+            })
+            .catch((err) => console.log("Token failure: ", err));
         }
+        handleCloseLoginModal();
       })
       .catch((err) => console.log("Login failed: ", err))
       .finally(handleLoading);
@@ -135,12 +143,16 @@ function App() {
       .register(email, password, name, avatar)
       .then((res) => {
         if (res) {
-          //localStorage.setItem('jwt', res.jwt)
-          setIsLoggedIn(true);
-          handleCloseModal();
-          setCurrentUser({ name, avatar });
-          //history.push() maybe
+          localStorage.setItem("jwt", res.token);
+          auth
+            .checkToken(res.token)
+            .then((data) => {
+              setCurrentUser(data);
+            })
+            .catch((err) => console.log("Token failure: ", err));
+          setIsLoggedIn(true); //history.push() maybe
         }
+        handleCloseRegisterModal();
       })
       .catch((err) => console.log("Registration failed:", err))
       .finally(handleLoading);
@@ -175,6 +187,7 @@ function App() {
     getForecastWeather()
       .then((data) => {
         const temperature = parseWeatherData(data);
+        console.log(temperature);
         setTemp(temperature);
         getItems()
           .then((res) => {
@@ -192,19 +205,18 @@ function App() {
       auth
         .checkToken(token)
         .then((res) => {
-          console.log(res);
           return res;
         })
         .catch((err) => console.log("Invalid token: ", err));
     }
   }, []);
 
-  const history = useHistory('');
+  const history = useHistory("");
 
   const logout = () => {
     setIsLoggedIn(false);
     localStorage.removeItem("jwt");
-    history.push('/login');
+    history.push("/login");
   };
 
   const [clothingItems, setClothingItems] = useState("");
@@ -235,7 +247,7 @@ function App() {
 
   return (
     <div>
-      <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
+      <CurrentUserContext.Provider value={{ currentUser }}>
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >

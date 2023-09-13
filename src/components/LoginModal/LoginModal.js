@@ -62,7 +62,7 @@ const LoginModal = ({
         />
       </label>
       <button
-        className="modal__button_two"
+        className="modal__button_two modal__button_login"
         type="button"
         onClick={onCreateRegisterModal}
       >

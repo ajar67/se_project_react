@@ -54,6 +54,7 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
+  text-decoration: none;
 }
 
 .header__profile {
@@ -67,4 +68,15 @@
   margin-left: 12px;
   width: 40px;
   height: 40px;
+}
+
+.header__button_nl {
+  color: black;
+  background-color: white;
+  border: none;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
 }
