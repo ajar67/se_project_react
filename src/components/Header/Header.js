@@ -49,8 +49,6 @@ const Header = ({
                   <img
                     src={
                       currentUser.avatar
-                        ? currentUser.avatar
-                        : currentUser.name[0]
                     }
                     className="header__avatar-logo"
                     alt="avatar"

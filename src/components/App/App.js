@@ -114,6 +114,7 @@ function App() {
       .authorize(email, password)
       .then((res) => {
         if (res) {
+          console.log(res);
           localStorage.setItem("jwt", res.token);
           auth
             .checkToken(res.token)
