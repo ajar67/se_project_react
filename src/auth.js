@@ -8,13 +8,13 @@ export const register = (username, password, name, avatar) => {
     },
     body: JSON.stringify({ username, password, name, avatar }),
   })
-    .then((response) => {
-      return response.json();
-    })
     .then((res) => {
-      return res;
+      return res.ok ? res.json() : Promise.reject(`Error ${res.status}`);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      throw err;
+    });
 };
 
 export const authorize = (email, password) => {
@@ -25,13 +25,13 @@ export const authorize = (email, password) => {
     },
     body: JSON.stringify({ email, password }),
   })
-    .then((response) => {
-      return response.json();
-    })
     .then((res) => {
-      return res;
+      return res.ok ? res.json() : Promise.reject(`Error ${res.status}`);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      throw err;
+    });
 };
 
 export const checkToken = (token) => {
@@ -42,11 +42,11 @@ export const checkToken = (token) => {
       authorization: `Bearer ${token}`,
     },
   })
-    .then((response) => {
-      return response.json();
+    .then((res) => {
+      return res.ok ? res.json() : Promise.reject(`Error ${res.status}`);
     })
-    .then((data) => {
-      return data;
-    })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      throw err;
+    });
 };

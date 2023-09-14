@@ -119,9 +119,11 @@ function App() {
           auth
             .checkToken(res.token)
             .then((data) => {
-              setCurrentUser(data);
-              console.log(data);
-              setIsLoggedIn(true);
+              if (password === data.password) {
+                setCurrentUser(data);
+                console.log(data);
+                setIsLoggedIn(true);
+              }
             })
             .catch((err) => console.log("Token failure: ", err));
         }
