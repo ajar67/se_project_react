@@ -51,7 +51,7 @@
   "bugs": {
     "url": "https://github.com/ajar67/se_project_react/issues"
   },
-  "homepage": "https://github.com/ajar67/se_project_react",
+  "homepage": "https://ajar67.github.io/se_project_react",
   "devDependencies": {
     "nodemon": "^3.0.1"
   }
