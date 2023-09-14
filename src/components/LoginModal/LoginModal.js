@@ -8,15 +8,52 @@ const LoginModal = ({
   buttonText,
   onCreateRegisterModal,
 }) => {
+  const [formErrors, setFormErrors] = useState({
+    email: "Enter a valid email",
+    password: "Enter a password",
+  });
+
   const [email, setEmail] = useState("");
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+    const validateEmail = (email) => {
+      const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+      return emailRegex.test(email);
+    };
+    if (e.target.name === "email") {
+      const isValidEmail = validateEmail(e.target.value);
+      setFormErrors({
+        ...formErrors,
+        email: isValidEmail ? "" : "Invalid email address",
+      });
+    }
   };
 
   const [password, setPassword] = useState("");
+  const [maskedPassword, setMaskedPassword] = useState("");
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+    const asterisks = "*".repeat(password.length);
+    setMaskedPassword(asterisks);
+    const validatePassword = (password) => {
+      if (password.length > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    };
+    if (e.target.name === "password") {
+      const isValidPassword = validatePassword(e.target.value);
+      setFormErrors({
+        ...formErrors,
+        password: isValidPassword ? "" : "Must enter a password",
+      });
+    }
   };
+
+  const isSubmitDisabled = Object.values(formErrors).some(
+    (error) => error !== ""
+  );
 
   useEffect(() => {
     setEmail("");
@@ -34,6 +71,7 @@ const LoginModal = ({
       buttonText={buttonText}
       onClose={onCloseModal}
       onSubmit={handleSubmit}
+      isSubmitDisabled={isSubmitDisabled}
     >
       <label className="modal__info">
         Email
@@ -46,12 +84,13 @@ const LoginModal = ({
           maxLength="30"
           placeholder="Email"
           onChange={handleEmailChange}
+          required
         />
       </label>
       <label className="modal__info">
         Password
         <input
-          value={password}
+          value={maskedPassword}
           className="modal__input"
           type="text"
           name="password"
@@ -59,6 +98,7 @@ const LoginModal = ({
           maxLength="30"
           placeholder="Password"
           onChange={handlePasswordChange}
+          required
         />
       </label>
       <button

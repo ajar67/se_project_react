@@ -57,8 +57,12 @@
   cursor: pointer;
 }
 
-.modal__button-submit:hover {
-  opacity: 0.6;
+.modal__button-submit:not(:disabled):hover {
+  opacity: 0.5;
+}
+
+.modal__button-submit:disabled {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .modal__button_two {
@@ -66,7 +70,7 @@
   border: none;
   width: 125px;
   height: 30px;
-  font-family: 'Cabinet Grotesk', sans-serif;
+  font-family: "Cabinet Grotesk", sans-serif;
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
