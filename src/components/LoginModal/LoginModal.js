@@ -30,11 +30,8 @@ const LoginModal = ({
   };
 
   const [password, setPassword] = useState("");
-  const [maskedPassword, setMaskedPassword] = useState("");
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    const asterisks = "*".repeat(password.length);
-    setMaskedPassword(asterisks);
     const validatePassword = (password) => {
       if (password.length > 0) {
         return true;
@@ -90,9 +87,9 @@ const LoginModal = ({
       <label className="modal__info">
         Password
         <input
-          value={maskedPassword}
+          value={password}
           className="modal__input"
-          type="text"
+          type="password"
           name="password"
           minLength="1"
           maxLength="30"
