@@ -1,16 +1,14 @@
-import { baseURL } from "./utils/constants";
+import { baseURL, processResponseServer } from "./utils/constants";
 
-export const register = (username, password, name, avatar) => {
+export const register = (email, password, name, avatar) => {
   return fetch(`${baseURL}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ username, password, name, avatar }),
+    body: JSON.stringify({ email, password, name, avatar }),
   })
-    .then((res) => {
-      return res.ok ? res.json() : Promise.reject(`Error ${res.status}`);
-    })
+    .then(processResponseServer)
     .catch((err) => {
       console.log(err);
       throw err;
@@ -25,9 +23,7 @@ export const authorize = (email, password) => {
     },
     body: JSON.stringify({ email, password }),
   })
-    .then((res) => {
-      return res.ok ? res.json() : Promise.reject(`Error ${res.status}`);
-    })
+    .then(processResponseServer)
     .catch((err) => {
       console.log(err);
       throw err;
@@ -42,9 +38,7 @@ export const checkToken = (token) => {
       authorization: `Bearer ${token}`,
     },
   })
-    .then((res) => {
-      return res.ok ? res.json() : Promise.reject(`Error ${res.status}`);
-    })
+    .then(processResponseServer)
     .catch((err) => {
       console.log(err);
       throw err;

@@ -114,16 +114,15 @@ function App() {
       .authorize(email, password)
       .then((res) => {
         if (res) {
-          console.log(res);
           localStorage.setItem("jwt", res.token);
+          console.log(res);
+          console.log(res.token);
+          console.log(res.jwt);
           auth
             .checkToken(res.token)
             .then((data) => {
-              if (password === data.password) {
-                setCurrentUser(data);
-                console.log(data);
+                setCurrentUser(data.data);
                 setIsLoggedIn(true);
-              }
             })
             .catch((err) => console.log("Token failure: ", err));
         }
@@ -181,6 +180,7 @@ function App() {
     handleLoading();
     profileUpdate({ name, avatar })
       .then((res) => {
+        console.log(res);
         return res;
       })
       .catch((err) => console.log("Update denied: ", err))
@@ -246,6 +246,7 @@ function App() {
           })
           .catch((err) => console.log(err));
   };
+  console.log('initialCards: ', initialCards);
 
   ////////////////////////////////////////////////////////////////////////////////////////
 

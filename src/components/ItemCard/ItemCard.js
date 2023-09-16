@@ -8,6 +8,7 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
   function handleLikeClick() {
     onCardLike(item);
   }
+  console.log('item: ', item);
   const isLiked = item.likes.some((id) => id === currentUser._id);
   const itemLikeButtonClassName = `card__button-like ${
     isLiked ? "card__button-like_visible" : "card__button-like_hidden"

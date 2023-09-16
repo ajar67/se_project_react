@@ -4,10 +4,11 @@ import "./ClothesSection.css";
 import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 
 const ClothesSection = ({ onCreateModal, currentCards, onSelectCard }) => {
-  const {currentUser} = React.useContext(CurrentUserContext);
-  const userCards = currentCards.map((card) => {
-    return card.owner._id === currentUser._id
-  });
+  const { currentUser } = React.useContext(CurrentUserContext);
+  const userCards = currentCards.filter(
+    (card) => card.owner._id === currentUser._id
+  );
+  console.log("userCards: ", userCards);
   return (
     <div className="clothes">
       <div className="clothes__section">

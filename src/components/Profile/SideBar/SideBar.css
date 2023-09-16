@@ -1,6 +1,12 @@
 .sidebar {
   display: flex;
+  flex-direction: column;
+}
+
+.sidebar__profile{
+  display: flex;
   flex-direction: row;
+  margin-bottom: 20px;
 }
 
 .sidebar__image {
@@ -12,7 +18,28 @@
   width: 56px;
 }
 
+.sidebar__info {
+  margin-right: 117px;
+}
+
+
 .sidebar__name {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  color: #000000;
+}
+
+.sidebar__buttons{
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+.sidebar__button{
+  text-align: start;
   margin-right: 117px;
   font-family: "Cabinet Grotesk", sans-serif;
   font-style: normal;
@@ -20,4 +47,6 @@
   font-size: 20px;
   line-height: 25px;
   color: #000000;
+  border: none;
+  background-color: white;
 }

@@ -3,10 +3,10 @@ import SideBar from "./SideBar/SideBar";
 import ClothesSection from "./ClothesSection/ClothesSection";
 import React from "react";
 
-const Profile = ({ onCreateModal, currentCards, onSelectCard }) => {
+const Profile = ({ onCreateProfileModal, onLogout, onCreateModal, currentCards, onSelectCard }) => {
   return (
     <div className="profile">
-      <SideBar />
+      <SideBar onCreateProfileModal={onCreateProfileModal} onLogout={onLogout} />
       <ClothesSection
         onCreateModal={onCreateModal}
         currentCards={currentCards}
