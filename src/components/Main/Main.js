@@ -45,6 +45,7 @@ function Main({ weatherTemp, onSelectCard, currentCards, onCardLike }) {
     <main className="main">
       <WeatherCard day={false} type="Cloudy" weatherTemp={weatherTemp} />
       <section className="card__section">
+        <div className='temp__section'></div>
         Today is {todayTemp + " °" + currentTemperatureUnit}/ you may want to
         wear:
         <div className="card__items">

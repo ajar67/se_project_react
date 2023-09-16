@@ -8,25 +8,24 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
   function handleLikeClick() {
     onCardLike(item);
   }
-  console.log('item: ', item);
+  console.log("item: ", item);
   const isLiked = item.likes.some((id) => id === currentUser._id);
   const itemLikeButtonClassName = `card__button-like ${
     isLiked ? "card__button-like_visible" : "card__button-like_hidden"
   }`;
 
   return (
-    <div>
-      <div className="card__inform">
-        <div className="card__name">{item.name}</div>
-        <button
-          type="button"
-          className={itemLikeButtonClassName}
-          onClick={handleLikeClick}
-        >
-          {likeButton}
-        </button>
-      </div>
       <div className="card__pic">
+        <div className="card__inform">
+          <div className="card__name">{item.name}</div>
+          <button
+            type="button"
+            className={itemLikeButtonClassName}
+            onClick={handleLikeClick}
+          >
+            {likeButton}
+          </button>
+        </div>
         <img
           src={item.imageUrl}
           alt={item.name}
@@ -34,7 +33,6 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
           onClick={() => onSelectCard(item)}
         />
       </div>
-    </div>
   );
 };
 

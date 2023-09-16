@@ -181,6 +181,8 @@ function App() {
     profileUpdate({ name, avatar })
       .then((res) => {
         console.log(res);
+        setCurrentUser({name: name, avatar: avatar});
+        console.log(currentUser);
         return res;
       })
       .catch((err) => console.log("Update denied: ", err))

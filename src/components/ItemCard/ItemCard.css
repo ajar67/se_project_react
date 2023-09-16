@@ -1,5 +1,21 @@
+.card__pic {
+  width: 323px;
+  height: 326px;
+  border-radius: 19px;
+  border: 2px;
+  background-color: rgba(0,0,0,0.3);
+}
+
 .card__name {
   text-align: center;
+}
+
+.card__inform {
+  display: flex;
+  flex-direction: row;
+  width: 137px;
+  height: 24px;
+  gap: 10px;
 }
 
 .card__image {
