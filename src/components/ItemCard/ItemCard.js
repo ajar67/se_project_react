@@ -1,6 +1,6 @@
 import "./ItemCard.css";
 import React from "react";
-// import likeButton from "../../images/likeButton.svg";
+import likeButton from "../../images/likeButton.svg";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const ItemCard = ({ item, onSelectCard, onCardLike }) => {
@@ -15,21 +15,25 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
   }`;
 
   return (
-    <div className="card__pic">
+    <div className="card__container">
       <div className="card__inform">
         <div className="card__name">{item.name}</div>
         <button
           type="button"
           className={itemLikeButtonClassName}
-          onClick={handleLikeClick}
-        ></button>
+          onClick={() => handleLikeClick()}
+        >
+          <img src={likeButton} alt='like button' className='card__likebutton_img'/>
+        </button>
       </div>
-      <img
-        src={item.imageUrl}
-        alt={item.name}
-        className="card__image"
-        onClick={() => onSelectCard(item)}
-      />
+      <div className='card__pic'>
+        <img
+          src={item.imageUrl}
+          alt={item.name}
+          className="card__image"
+          onClick={() => onSelectCard(item)}
+        />
+      </div>
     </div>
   );
 };

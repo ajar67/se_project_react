@@ -227,7 +227,7 @@ function App() {
   ////////////////////////////////////////////from the breif /////////////////////
 
   const handleLikeClick = ({ id, isLiked, user }) => {
-    console.log(clothingItems);
+    console.log('handleLikeClick: ', clothingItems);
     const token = localStorage.getItem("jwt");
     isLiked
       ? addCardLike(id, token)

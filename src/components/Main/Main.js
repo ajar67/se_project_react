@@ -50,7 +50,7 @@ function Main({ weatherTemp, onSelectCard, currentCards, onCardLike }) {
         wear:
         <div className="card__items">
           {filteredCards.map((item) => (
-            <ItemCard onCardLike={onCardLike} item={item} key={item.id} onSelectCard={onSelectCard} />
+            <ItemCard onCardLike={onCardLike} item={item} key={item._id} onSelectCard={onSelectCard} />
           ))}
         </div>
       </section>

@@ -1,37 +1,56 @@
-.card__pic {
+.card__container {
   width: 325px;
   height: 328px;
   border-radius: 19px;
-  border: 2px;
+  border: 2px solid rgba(0,0,0,0.3);
   background-color: rgba(0,0,0,0.3);
 }
 
+.card__pic{
+  position: relative;
+  width: 325px;
+  height: 328px;
+}
 
 .card__name {
   text-align: center;
+  background-color: black;
+  color: white;
+  height: 24px;
+  max-width: 115px;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
 } 
 
 .card__inform {
+  
+  z-index: 1;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 137px;
-  height: 24px;
-  gap: 10px; 
+  width: 325px;
+  gap: 5px; 
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .card__image {
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 19px;
   cursor: pointer; 
 }
 
 .card__button-like_visible {
   display: inline-block;
-  background-image: url('../../images/likeButton.svg');
 }
 
 .card__button-like_hidden {
   display: hidden;
+}
+
+.card__button-like{
+  background: none;
+  border: none;
 }
