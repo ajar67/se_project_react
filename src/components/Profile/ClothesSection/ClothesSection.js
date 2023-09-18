@@ -5,8 +5,9 @@ import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 
 const ClothesSection = ({ onCreateModal, currentCards, onSelectCard }) => {
   const { currentUser } = React.useContext(CurrentUserContext);
+  console.log('dddd', currentCards);
   const userCards = currentCards.filter(
-    (card) => card.owner._id === currentUser._id
+    (card) => card.owner === currentUser._id
   );
   console.log("userCards: ", userCards);
   return (

@@ -1,32 +1,35 @@
 .card__pic {
-  width: 323px;
-  height: 326px;
+  width: 325px;
+  height: 328px;
   border-radius: 19px;
   border: 2px;
   background-color: rgba(0,0,0,0.3);
 }
 
+
 .card__name {
   text-align: center;
-}
+} 
 
 .card__inform {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   width: 137px;
   height: 24px;
-  gap: 10px;
+  gap: 10px; 
 }
 
 .card__image {
-  width: 328px;
-  height: 328px;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
-  cursor: pointer;
+  cursor: pointer; 
 }
 
 .card__button-like_visible {
   display: inline-block;
+  background-image: url('../../images/likeButton.svg');
 }
 
 .card__button-like_hidden {

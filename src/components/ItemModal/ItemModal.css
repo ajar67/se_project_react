@@ -12,12 +12,22 @@
 .modal__pic {
   position: relative;
   background-color: white;
-  height: 610px;
+  color: black;
+  height: 400px;
   border-radius: 10px;
+  width: 425px;
+  height: 500px;
+}
+
+.modal__container_image{
+  width: 425px;
 }
 
 .modal__image {
   border-radius: 16px 16px 0 0;
+  cursor: pointer;
+  max-width: 425px;
+  height: 380px;
 }
 
 .modal__button-reset {
@@ -58,7 +68,7 @@
   gap: 12px;
 }
 
-.modal__button-delete_visible {
+.modal__button-delete {
   font-family: "Cabinet Grotesk", sans-serif;
   font-style: normal;
   font-weight: 700;
@@ -67,6 +77,13 @@
   color: #ff4d00;
   border: none;
   background: none;
+}
+
+.modal__button-delete:hover {
+  opacity: 0.5;
+}
+
+.modal__button-delete_visible {
 }
 
 .modal__button-delete_hidden {

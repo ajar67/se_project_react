@@ -82,9 +82,9 @@ function App() {
 
   const handleDeleteCard = (deleteCard) => {
     handleLoading();
-    deleteItem(deleteCard.id)
+    deleteItem(deleteCard._id)
       .then(() => {
-        const filterCards = initialCards.filter((x) => deleteCard.id !== x.id);
+        const filterCards = initialCards.filter((x) => deleteCard._id !== x._id);
         setInitialCards(filterCards);
         handleCloseModal();
       })
@@ -115,9 +115,6 @@ function App() {
       .then((res) => {
         if (res) {
           localStorage.setItem("jwt", res.token);
-          console.log(res);
-          console.log(res.token);
-          console.log(res.jwt);
           auth
             .checkToken(res.token)
             .then((data) => {
@@ -182,7 +179,7 @@ function App() {
       .then((res) => {
         console.log(res);
         setCurrentUser({name: name, avatar: avatar});
-        console.log(currentUser);
+        handleCloseEditProfileModal();
         return res;
       })
       .catch((err) => console.log("Update denied: ", err))

@@ -9,6 +9,7 @@ function addItem({ name, imageUrl, weather }) {
   return fetch(`${baseURL}/items`, {
     method: "POST",
     headers: {
+      "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
@@ -32,9 +33,10 @@ function deleteItem(id) {
 
 function profileUpdate({ name, avatar }) {
   const token = localStorage.getItem("jwt");
-  return fetch(`${baseURL}/me`, {
+  return fetch(`${baseURL}/users/me`, {
     method: "PATCH",
     headers: {
+      "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
@@ -49,7 +51,7 @@ function addCardLike(id, token) {
     method: "PUT",
     headers: {
       authorization: `Bearer ${token}`,
-    }
+    },
   }).then(processResponseServer);
 }
 
@@ -58,8 +60,15 @@ function removeCardLike(id, token) {
     method: "DELETE",
     headers: {
       authorization: `Bearer ${token}`,
-    }
+    },
   }).then(processResponseServer);
 }
 
-export { getItems, addItem, deleteItem, profileUpdate, addCardLike, removeCardLike };
+export {
+  getItems,
+  addItem,
+  deleteItem,
+  profileUpdate,
+  addCardLike,
+  removeCardLike,
+};
