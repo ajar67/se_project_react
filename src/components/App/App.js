@@ -84,7 +84,9 @@ function App() {
     handleLoading();
     deleteItem(deleteCard._id)
       .then(() => {
-        const filterCards = initialCards.filter((x) => deleteCard._id !== x._id);
+        const filterCards = initialCards.filter(
+          (x) => deleteCard._id !== x._id
+        );
         setInitialCards(filterCards);
         handleCloseModal();
       })
@@ -118,8 +120,8 @@ function App() {
           auth
             .checkToken(res.token)
             .then((data) => {
-                setCurrentUser(data.data);
-                setIsLoggedIn(true);
+              setCurrentUser(data.data);
+              setIsLoggedIn(true);
             })
             .catch((err) => console.log("Token failure: ", err));
         }
@@ -178,7 +180,7 @@ function App() {
     profileUpdate({ name, avatar })
       .then((res) => {
         console.log(res);
-        setCurrentUser({name: name, avatar: avatar});
+        setCurrentUser({ name: name, avatar: avatar });
         handleCloseEditProfileModal();
         return res;
       })
@@ -227,7 +229,7 @@ function App() {
   ////////////////////////////////////////////from the breif /////////////////////
 
   const handleLikeClick = ({ id, isLiked, user }) => {
-    console.log('handleLikeClick: ', clothingItems);
+    console.log("handleLikeClick: ", clothingItems);
     const token = localStorage.getItem("jwt");
     isLiked
       ? addCardLike(id, token)
@@ -245,7 +247,7 @@ function App() {
           })
           .catch((err) => console.log(err));
   };
-  console.log('initialCards: ', initialCards);
+  console.log("initialCards: ", initialCards);
 
   ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -283,6 +285,7 @@ function App() {
                   currentCards={initialCards}
                   onCreateProfileModal={handleEditProfileModal}
                   onLogout={logout}
+                  onCardLike={handleLikeClick}
                 />
               )}
             />

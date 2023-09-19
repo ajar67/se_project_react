@@ -3,7 +3,7 @@ import React from "react";
 import "./ClothesSection.css";
 import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 
-const ClothesSection = ({ onCreateModal, currentCards, onSelectCard }) => {
+const ClothesSection = ({ onCreateModal, currentCards, onSelectCard, onCardLike }) => {
   const { currentUser } = React.useContext(CurrentUserContext);
   console.log('dddd', currentCards);
   const userCards = currentCards.filter(
@@ -25,7 +25,7 @@ const ClothesSection = ({ onCreateModal, currentCards, onSelectCard }) => {
         </div>
         <section className="clothes__cards">
           {userCards.map((item) => (
-            <ItemCard item={item} key={item.id} onSelectCard={onSelectCard} />
+            <ItemCard item={item} key={item.id} onSelectCard={onSelectCard} onCardLike={onCardLike} />
           ))}
         </section>
       </div>
