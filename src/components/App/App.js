@@ -179,7 +179,7 @@ function App() {
     handleLoading();
     profileUpdate({ name, avatar })
       .then((res) => {
-        console.log(res);
+        console.log("edit profile: ", res);
         setCurrentUser({ name: name, avatar: avatar });
         handleCloseEditProfileModal();
         return res;
@@ -199,6 +199,7 @@ function App() {
             setInitialCards(res.data);
           })
           .catch(() => console.log("Error!"));
+        handleLoginModal();
       })
       .catch(() => console.log("Error!"));
   }, []);

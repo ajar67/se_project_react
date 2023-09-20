@@ -10,6 +10,7 @@
   position: relative;
   width: 325px;
   height: 328px;
+  top: -34px;
 }
 
 .card__name {
@@ -24,7 +25,7 @@
 }
 
 .card__inform {
-  z-index: 1;
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -35,6 +36,8 @@
 }
 
 .card__image {
+  position: relative;
+  top: 0px;
   width: 100%;
   height: 100%;
   border-radius: 19px;
