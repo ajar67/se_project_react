@@ -1,7 +1,7 @@
 import "./ItemCard.css";
-import React from "react";
+import React, { useState } from "react";
 import likeButtonInactive from "../../images/likeButtonInactive.svg";
-import likeButtonActive from '../../images/likeButtonActive.svg';
+import likeButtonActive from "../../images/likeButtonActive.svg";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const ItemCard = ({ item, onSelectCard, onCardLike }) => {
@@ -12,9 +12,11 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
     isLiked ? "card__button-like_visible" : "card__button-like_hidden"
   }`;
 
+  const [activeLike, setActiveLike] = useState(false);
 
   function handleLikeClick() {
-    onCardLike({id: item._id, isLiked: isLiked, user: currentUser});
+    onCardLike({ id: item._id, isLiked: isLiked, user: currentUser });
+    setActiveLike((prevActiveLike) => !prevActiveLike);
   }
 
   return (
@@ -26,10 +28,14 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
           className={itemLikeButtonClassName}
           onClick={() => handleLikeClick()}
         >
-          <img src={isLiked ? likeButtonActive : likeButtonInactive} alt='like button' className='card__likebutton_img'/>
+          <img
+            src={activeLike ? likeButtonActive : likeButtonInactive}
+            alt="like button"
+            className="card__likebutton_img"
+          />
         </button>
       </div>
-      <div className='card__pic'>
+      <div className="card__pic">
         <img
           src={item.imageUrl}
           alt={item.name}

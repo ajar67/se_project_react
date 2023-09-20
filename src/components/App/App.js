@@ -224,7 +224,7 @@ function App() {
     history.push("/login");
   };
 
-  const [clothingItems, setClothingItems] = useState("");
+  const [clothingItems, setClothingItems] = useState([]);
 
   ////////////////////////////////////////////from the breif /////////////////////
 
@@ -234,15 +234,15 @@ function App() {
     isLiked
       ? addCardLike(id, token)
           .then((updatedCard) => {
-            setClothingItems((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
+            setClothingItems(() =>
+              clothingItems.map((c) => (c._id === id ? updatedCard : c))
             );
           })
           .catch((err) => console.log(err))
       : removeCardLike(id, token)
           .then((updatedCard) => {
-            setClothingItems((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
+            setClothingItems(() =>
+              clothingItems.map((c) => (c._id === id ? updatedCard : c))
             );
           })
           .catch((err) => console.log(err));
