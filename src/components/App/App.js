@@ -180,7 +180,8 @@ function App() {
     profileUpdate({ name, avatar })
       .then((res) => {
         console.log("edit profile: ", res);
-        setCurrentUser({ name: name, avatar: avatar });
+        setCurrentUser(res.result);
+        console.log("fjfjffjfjfjfj =", currentUser);
         handleCloseEditProfileModal();
         return res;
       })
