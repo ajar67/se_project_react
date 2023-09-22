@@ -6,26 +6,20 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const ItemCard = ({ item, onSelectCard, onCardLike }) => {
   const { currentUser } = React.useContext(CurrentUserContext);
-  console.log("item: ", item);
-  console.log("item.likes = ", item.likes);
-  console.log("item.owner = ", item.owner);
+  console.log('item = ', item);
   console.log(currentUser);
-  const isLiked = item.owner === currentUser?._id ? true : false;
-  console.log("isLiked: ", isLiked);
+  const isLiked = item.likes.some(like => like._id === currentUser?._id);
   const itemLikeButtonClassName = `card__button-like ${
     isLiked ? "card__button-like_visible" : "card__button-like_hidden"
   }`;
 
-  console.log(itemLikeButtonClassName);
-
   const [activeLike, setActiveLike] = useState(false);
-  console.log(activeLike, "active like");
 
   function handleLikeClick() {
+    const newLikeStatus = !activeLike;
     onCardLike({ id: item._id, isLiked: isLiked, user: currentUser });
-    setActiveLike((prevActiveLike) => !prevActiveLike);
+    setActiveLike(newLikeStatus);
   }
-
   return (
     <div className="card__container">
       <img
@@ -39,7 +33,7 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
         <button
           type="button"
           className={itemLikeButtonClassName}
-          onClick={() => handleLikeClick()}
+          onClick={handleLikeClick}
         >
           <img
             src={activeLike ? likeButtonActive : likeButtonInactive}

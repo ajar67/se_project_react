@@ -102,8 +102,9 @@ function App() {
       weather: weather,
     })
       .then((item) => {
-        const card = { ...item, name, imageUrl, weather };
+        const card = { ...item.data, name, imageUrl, weather };
         setInitialCards([card, ...initialCards]);
+        console.log("initial cards after adding: ", initialCards);
         handleCloseModal();
       })
       .catch(console.error)
@@ -234,17 +235,17 @@ function App() {
     console.log("handleLikeClick: ", clothingItems);
     const token = localStorage.getItem("jwt");
     isLiked
-      ? addCardLike(id, token)
+      ? removeCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems(() =>
-              clothingItems.map((c) => (c._id === id ? updatedCard : c))
+              clothingItems.map((c) => (c._id === id ? updatedCard.data : c))
             );
           })
           .catch((err) => console.log(err))
-      : removeCardLike(id, token)
+      : addCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems(() =>
-              clothingItems.map((c) => (c._id === id ? updatedCard : c))
+              clothingItems.map((c) => (c._id === id ? updatedCard.data : c))
             );
           })
           .catch((err) => console.log(err));

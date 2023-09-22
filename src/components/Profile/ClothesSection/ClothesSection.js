@@ -3,9 +3,14 @@ import React from "react";
 import "./ClothesSection.css";
 import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 
-const ClothesSection = ({ onCreateModal, currentCards, onSelectCard, onCardLike }) => {
+const ClothesSection = ({
+  onCreateModal,
+  currentCards,
+  onSelectCard,
+  onCardLike,
+}) => {
   const { currentUser } = React.useContext(CurrentUserContext);
-  console.log('dddd', currentCards);
+  console.log("dddd", currentCards);
   const userCards = currentCards.filter(
     (card) => card.owner === currentUser._id
   );
@@ -25,7 +30,12 @@ const ClothesSection = ({ onCreateModal, currentCards, onSelectCard, onCardLike 
         </div>
         <section className="clothes__cards">
           {userCards.map((item) => (
-            <ItemCard item={item} key={item.id} onSelectCard={onSelectCard} onCardLike={onCardLike} />
+            <ItemCard
+              item={item}
+              key={item._id}
+              onSelectCard={onSelectCard}
+              onCardLike={onCardLike}
+            />
           ))}
         </section>
       </div>
