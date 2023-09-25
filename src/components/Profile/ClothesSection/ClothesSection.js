@@ -8,6 +8,7 @@ const ClothesSection = ({
   currentCards,
   onSelectCard,
   onCardLike,
+  loggedIn
 }) => {
   const { currentUser } = React.useContext(CurrentUserContext);
   console.log("dddd", currentCards);
@@ -35,6 +36,7 @@ const ClothesSection = ({
               key={item._id}
               onSelectCard={onSelectCard}
               onCardLike={onCardLike}
+              loggedIn={loggedIn}
             />
           ))}
         </section>

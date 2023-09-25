@@ -3,7 +3,7 @@ import SideBar from "./SideBar/SideBar";
 import ClothesSection from "./ClothesSection/ClothesSection";
 import React from "react";
 
-const Profile = ({ onCreateProfileModal, onLogout, onCreateModal, currentCards, onSelectCard, onCardLike }) => {
+const Profile = ({ onCreateProfileModal, onLogout, onCreateModal, currentCards, onSelectCard, onCardLike, loggedIn }) => {
   return (
     <div className="profile">
       <SideBar onCreateProfileModal={onCreateProfileModal} onLogout={onLogout} />
@@ -12,6 +12,7 @@ const Profile = ({ onCreateProfileModal, onLogout, onCreateModal, currentCards, 
         currentCards={currentCards}
         onSelectCard={onSelectCard}
         onCardLike={onCardLike}
+        loggedIn={loggedIn}
       />
     </div>
   );

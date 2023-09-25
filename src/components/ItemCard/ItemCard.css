@@ -42,7 +42,7 @@
 }
 
 .card__button-like_hidden {
-  display: hidden;
+  display: none;
 }
 
 .card__button-like {

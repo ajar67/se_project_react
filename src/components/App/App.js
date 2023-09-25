@@ -201,19 +201,20 @@ function App() {
             setInitialCards(res.data);
           })
           .catch(() => console.log("Error!"));
-        handleLoginModal();
       })
       .catch(() => console.log("Error!"));
   }, []);
 
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
+    console.log(jwt);
     if (jwt) {
-      setToken(jwt);
+      localStorage.setItem("jwt", jwt);
       auth
-        .checkToken(token)
+        .checkToken(jwt)
         .then((res) => {
-          return res;
+          setIsLoggedIn(true);
+          setCurrentUser(res.data);
         })
         .catch((err) => console.log("Invalid token: ", err));
     }
@@ -224,7 +225,7 @@ function App() {
   const logout = () => {
     setIsLoggedIn(false);
     localStorage.removeItem("jwt");
-    history.push("/login");
+    history.push("/");
   };
 
   const [clothingItems, setClothingItems] = useState([]);
@@ -275,6 +276,7 @@ function App() {
                 onSelectCard={handleSelectedCard}
                 currentCards={initialCards}
                 onCardLike={handleLikeClick}
+                loggedIn={isLoggedIn}
               />
             </Route>
             <ProtectedRoute
@@ -289,6 +291,7 @@ function App() {
                   onCreateProfileModal={handleEditProfileModal}
                   onLogout={logout}
                   onCardLike={handleLikeClick}
+                  loggedIn={isLoggedIn}
                 />
               )}
             />
