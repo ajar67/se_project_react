@@ -6,27 +6,36 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const ItemCard = ({ item, onSelectCard, onCardLike, loggedIn }) => {
   const { currentUser } = React.useContext(CurrentUserContext);
-  //const isLiked = item.likes.some((like) => like?._id === currentUser?._id);
+  const isLiked2 = item.likes.some((like) => like === currentUser?._id);
   const itemLikeButtonClassName = `card__button-like ${
     loggedIn ? "card__button-like_visible" : "card__button-like_hidden"
   }`;
 
-  const [activeLike, setActiveLike] = useState(!!item.likes.length);
+  const [isLiked, setIsLiked] = useState(
+    item.likes.some((like) => like === currentUser?._id)
+  );
+
+  if (item._id === "6514800ee8c0bf3be38d23ef")
+    console.log({ isLiked, isLiked2 });
 
   function handleLikeClick() {
-    const newLikeStatus = !activeLike;
-    console.log("newLikeStatus: ", newLikeStatus);
-    onCardLike({ id: item._id, isLiked: activeLike, user: currentUser });
-    setActiveLike(newLikeStatus);
-    //console.log('newLikeStatus: ', newLikeStatus);
-
-    //localStorage.setItem("isLiked", newLikeStatus);
+    const newLikeStatus = !isLiked;
+    onCardLike({ id: item._id, isLiked: isLiked, user: currentUser })
+      .then(() => {
+        setIsLiked(newLikeStatus);
+      })
+      .catch((err) => console.error(err));
   }
 
-  // useEffect(() => {
-  //   const likedStatus = localStorage.getItem("isLiked");
-  //   setActiveLike(likedStatus === "true");
-  // }, []);
+  //   function handleLikeClick() {
+  //     if (item.likes.includes(currentUser._id)) {
+  //       onCardLike({ id: item._id, isLiked: true, user: currentUser });
+  //       setActiveLike(false);
+  //     } else {
+  //       onCardLike({ id: item._id, isLiked: false, user: currentUser });
+  //       setActiveLike(true);
+  //     }
+  //  }
 
   return (
     <div className="card__container">
@@ -44,7 +53,7 @@ const ItemCard = ({ item, onSelectCard, onCardLike, loggedIn }) => {
           onClick={handleLikeClick}
         >
           <img
-            src={activeLike ? likeButtonActive : likeButtonInactive}
+            src={isLiked ? likeButtonActive : likeButtonInactive}
             alt="like button"
             className="card__likebutton_img"
           />
