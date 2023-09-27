@@ -325,6 +325,7 @@ function App() {
             selectedCard={selectedCard}
             onClose={handleCloseModal}
             onDelete={handleDeleteCard}
+            loggedIn={isLoggedIn}
           />
         )}
         {openRegisterModal === "create" && (

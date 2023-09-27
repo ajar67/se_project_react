@@ -3,15 +3,12 @@ import closeImage from "../../images/closeGrey.svg";
 import React from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-const ItemModal = ({ selectedCard, onClose, onDelete }) => {
+const ItemModal = ({ selectedCard, onClose, onDelete, loggedIn }) => {
   const { currentUser } = React.useContext(CurrentUserContext);
   const isOwn = selectedCard.owner === currentUser?._id;
   const itemDeleteButtonClassName = `modal__button-delete ${
     isOwn ? "modal__button-delete_visible" : "modal__button-delete_hidden"
   }`;
-  console.log("ddds: ", selectedCard);
-  console.log(selectedCard.imageUrl);
-  console.log("onDelete: ", onDelete);
   return (
     <div className="modal">
       <div className="modal__pic">

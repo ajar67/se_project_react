@@ -19,7 +19,7 @@
   height: 500px;
 }
 
-.modal__container_image{
+.modal__container_image {
   width: 425px;
 }
 
@@ -84,8 +84,9 @@
 }
 
 .modal__button-delete_visible {
+  display: inline-block;
 }
 
 .modal__button-delete_hidden {
-  display: hidden;
+  display: none;
 }

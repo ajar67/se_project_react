@@ -6,7 +6,6 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const ItemCard = ({ item, onSelectCard, onCardLike, loggedIn }) => {
   const { currentUser } = React.useContext(CurrentUserContext);
-  const isLiked2 = item.likes.some((like) => like === currentUser?._id);
   const itemLikeButtonClassName = `card__button-like ${
     loggedIn ? "card__button-like_visible" : "card__button-like_hidden"
   }`;
@@ -15,8 +14,6 @@ const ItemCard = ({ item, onSelectCard, onCardLike, loggedIn }) => {
     item.likes.some((like) => like === currentUser?._id)
   );
 
-  if (item._id === "6514800ee8c0bf3be38d23ef")
-    console.log({ isLiked, isLiked2 });
 
   function handleLikeClick() {
     const newLikeStatus = !isLiked;
