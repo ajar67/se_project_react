@@ -5,7 +5,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const ItemModal = ({ selectedCard, onClose, onDelete }) => {
   const { currentUser } = React.useContext(CurrentUserContext);
-  const isOwn = selectedCard.owner === currentUser._id;
+  const isOwn = selectedCard.owner === currentUser?._id;
   const itemDeleteButtonClassName = `modal__button-delete ${
     isOwn ? "modal__button-delete_visible" : "modal__button-delete_hidden"
   }`;
@@ -18,7 +18,7 @@ const ItemModal = ({ selectedCard, onClose, onDelete }) => {
         <button className="modal__button-reset" type="button" onClick={onClose}>
           <img src={closeImage} alt="close button" className="modal__close" />
         </button>
-        <div className='modal__container_image'>
+        <div className="modal__container_image">
           <img
             src={selectedCard.imageUrl}
             className="modal__image"

@@ -19,7 +19,7 @@ import {
   removeCardLike,
 } from "../../utils/api";
 import ProtectedRoute from "../ProtectedRoute";
-import * as auth from "../../auth";
+import * as auth from "../../utils/auth";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import EditProfileModal from "../EditProfileModal/EditProfielModal";
@@ -36,7 +36,7 @@ function App() {
   const [openLoginModal, setLoginModal] = useState("");
   const [openRegisterModal, setRegisterModal] = useState("");
   const [openEditProfileModal, setEditProfileModal] = useState("");
-  const [token, setToken] = useState("");
+  //const [token, setToken] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleToggleSwitchChange = () => {
@@ -190,6 +190,12 @@ function App() {
       .finally(handleLoading);
   }
 
+  // const isLiked = (status) => {
+  //   localStorage.getItem('isLiked');
+  //   localStoarge.setItem('isLiked', status);
+
+  // }
+
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
@@ -233,11 +239,12 @@ function App() {
   ////////////////////////////////////////////from the breif /////////////////////
 
   const handleLikeClick = ({ id, isLiked, user }) => {
-    console.log("handleLikeClick: ", clothingItems);
+    console.log("id: ", id);
     const token = localStorage.getItem("jwt");
     isLiked
       ? removeCardLike(id, token)
           .then((updatedCard) => {
+            console.log("updated card data: ", updatedCard);
             setClothingItems(() =>
               clothingItems.map((c) => (c._id === id ? updatedCard.data : c))
             );
@@ -245,13 +252,16 @@ function App() {
           .catch((err) => console.log(err))
       : addCardLike(id, token)
           .then((updatedCard) => {
+            console.log("updated card data: ", updatedCard);
             setClothingItems(() =>
               clothingItems.map((c) => (c._id === id ? updatedCard.data : c))
             );
           })
           .catch((err) => console.log(err));
   };
-  console.log("initialCards: ", initialCards);
+
+  //console.log("initialCards: ", initialCards);
+  //console.log("clothingItems: ", clothingItems);
 
   ////////////////////////////////////////////////////////////////////////////////////////
 

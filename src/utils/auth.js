@@ -1,4 +1,4 @@
-import { baseURL, processResponseServer } from "./utils/constants";
+import { baseURL, processResponseServer } from "./constants";
 
 export const register = (email, password, name, avatar) => {
   return fetch(`${baseURL}/signup`, {

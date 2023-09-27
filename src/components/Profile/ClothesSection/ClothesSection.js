@@ -8,12 +8,12 @@ const ClothesSection = ({
   currentCards,
   onSelectCard,
   onCardLike,
-  loggedIn
+  loggedIn,
 }) => {
   const { currentUser } = React.useContext(CurrentUserContext);
   console.log("dddd", currentCards);
   const userCards = currentCards.filter(
-    (card) => card.owner === currentUser._id
+    (card) => card.owner === currentUser?._id
   );
   console.log("userCards: ", userCards);
   return (

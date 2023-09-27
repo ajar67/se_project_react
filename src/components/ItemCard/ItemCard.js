@@ -11,13 +11,23 @@ const ItemCard = ({ item, onSelectCard, onCardLike, loggedIn }) => {
     loggedIn ? "card__button-like_visible" : "card__button-like_hidden"
   }`;
 
-  const [activeLike, setActiveLike] = useState(false);
+  const [activeLike, setActiveLike] = useState(!!item.likes.length);
 
   function handleLikeClick() {
     const newLikeStatus = !activeLike;
+    console.log("newLikeStatus: ", newLikeStatus);
     onCardLike({ id: item._id, isLiked: activeLike, user: currentUser });
     setActiveLike(newLikeStatus);
+    //console.log('newLikeStatus: ', newLikeStatus);
+
+    //localStorage.setItem("isLiked", newLikeStatus);
   }
+
+  // useEffect(() => {
+  //   const likedStatus = localStorage.getItem("isLiked");
+  //   setActiveLike(likedStatus === "true");
+  // }, []);
+
   return (
     <div className="card__container">
       <img
