@@ -10,6 +10,12 @@ https://what-to-wear.chickenkiller.com
 ## Installation
 Clone the Repo and run npm install and npm run to run on localhost
 
+## Technologies
+To build this app I used the latest technologies. I used React hooks for state management. For the CSS I used BEM methodology!
+React JS
+React Router
+CSS
+
 ## Updates
 I want to improve this website to make sure no more than one of the same items appear in the clothing section. 
 
