@@ -62,9 +62,9 @@ export const weatherOptions = [
 export const latitude = 44.34;
 export const longitude = 10.99;
 export const APIkey = "3eab23e819c9bfd00f4754f0c1c83ee8";
-export const baseUrl =
+export const baseURL =
   process.env.NODE_ENV === "production"
-    ? "chickenkiller.com"
+    ? "https://api.what-to-wear.chickenkiller.com"
     : "http://localhost:3001";
 export const processResponseServer = (res) => {
   if (res.ok) {

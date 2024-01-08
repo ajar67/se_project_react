@@ -180,21 +180,13 @@ function App() {
     handleLoading();
     profileUpdate({ name, avatar })
       .then((res) => {
-        console.log("edit profile: ", res);
         setCurrentUser(res.result);
-        console.log("fjfjffjfjfjfj =", currentUser);
         handleCloseEditProfileModal();
         return res;
       })
       .catch((err) => console.log("Update denied: ", err))
       .finally(handleLoading);
   }
-
-  // const isLiked = (status) => {
-  //   localStorage.getItem('isLiked');
-  //   localStoarge.setItem('isLiked', status);
-
-  // }
 
   useEffect(() => {
     getForecastWeather()
