@@ -43,7 +43,7 @@ const Header = ({
             </button>
             <Link to="/profile">
               <div className="header__profile">
-                <div className="header__name">{currentUser.name}</div>
+                <div className="header__name">{currentUser?.name}</div>
                 <div>
                   <img
                     src={
