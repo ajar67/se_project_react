@@ -5,7 +5,13 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import React from "react";
 
 //////////////////////////////////////////////////////////////////////////////
-function Main({ weatherTemp, onSelectCard, currentCards, onCardLike, loggedIn }) {
+function Main({
+  weatherTemp,
+  onSelectCard,
+  currentCards,
+  onCardLike,
+  loggedIn,
+}) {
   const { currentTemperatureUnit } = React.useContext(
     CurrentTemperatureUnitContext
   );
@@ -33,7 +39,9 @@ function Main({ weatherTemp, onSelectCard, currentCards, onCardLike, loggedIn })
 
   const weatherType = getWeatherType();
 
-  const filteredCards = currentCards.filter((item) => item.weather.toLowerCase() === weatherType);
+  const filteredCards = currentCards.filter(
+    (item) => item.weather.toLowerCase() === weatherType
+  );
 
   const todayTemp = weatherTemp && weatherTemp[currentTemperatureUnit];
 
@@ -41,12 +49,19 @@ function Main({ weatherTemp, onSelectCard, currentCards, onCardLike, loggedIn })
     <main className="main">
       <WeatherCard day={false} type="Cloudy" weatherTemp={weatherTemp} />
       <section className="card__section">
-        <div className='temp__section'></div>
-        Today is {todayTemp + " °" + currentTemperatureUnit}/ you may want to
-        wear:
+        <div className="temp__section">
+          Today is {todayTemp + " °" + currentTemperatureUnit}/ you may want to
+          wear:
+        </div>
         <div className="card__items">
           {filteredCards.map((item) => (
-            <ItemCard onCardLike={onCardLike} item={item} key={item._id} onSelectCard={onSelectCard} loggedIn={loggedIn}/>
+            <ItemCard
+              onCardLike={onCardLike}
+              item={item}
+              key={item._id}
+              onSelectCard={onSelectCard}
+              loggedIn={loggedIn}
+            />
           ))}
         </div>
       </section>

@@ -14,6 +14,7 @@
 .card__section {
   display: flex;
   margin-top: 34px;
+  flex-direction: column;
 }
 
 .card__items {
@@ -22,4 +23,6 @@
   gap: 17px;
   justify-content: center;
   margin-top: 34px;
+  padding-left: 100px;
+  padding-right: 100px;
 }

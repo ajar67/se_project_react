@@ -33,7 +33,7 @@ const Header = ({
       <div className="header__section-two">
         <ToggleSwitch value={value} onChange={onChange} />
         {loggedIn ? (
-          <div className='header__logged'>
+          <div className="header__logged">
             <button
               type="button"
               className="header__button"
@@ -46,9 +46,7 @@ const Header = ({
                 <div className="header__name">{currentUser?.name}</div>
                 <div>
                   <img
-                    src={
-                      currentUser.avatar
-                    }
+                    src={currentUser?.avatar}
                     className="header__avatar-logo"
                     alt="avatar"
                   />

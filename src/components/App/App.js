@@ -153,7 +153,6 @@ function App() {
               setCurrentUser(data);
             })
             .catch((err) => console.log("Token failure: ", err));
-          setIsLoggedIn(true); //history.push() maybe
         }
         handleCloseRegisterModal();
       })
@@ -192,7 +191,7 @@ function App() {
     getForecastWeather()
       .then((data) => {
         const temperature = parseWeatherData(data);
-        console.log(temperature);
+        console.log({ temperature });
         setTemp(temperature);
         getItems()
           .then((res) => {
@@ -205,14 +204,14 @@ function App() {
 
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
-    console.log(jwt);
+    console.log({ jwt });
     if (jwt) {
       localStorage.setItem("jwt", jwt);
       auth
         .checkToken(jwt)
         .then((res) => {
           setIsLoggedIn(true);
-          setCurrentUser(res.data);
+          setCurrentUser({ currentUser: res.data });
         })
         .catch((err) => console.log("Invalid token: ", err));
     }
@@ -225,8 +224,6 @@ function App() {
     localStorage.removeItem("jwt");
     history.push("/");
   };
-
-  //const [clothingItems, setClothingItems] = useState([]);
 
   ////////////////////////////////////////////from the breif /////////////////////
 
